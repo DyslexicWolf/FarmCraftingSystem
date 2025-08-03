@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://br48fyjfckcy6"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="InventoryManager" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="InventoryManager"]
+offset_left = 276.0
+offset_top = 166.0
+offset_right = 865.0
+offset_bottom = 550.0
+
+[node name="Inventory" type="ItemList" parent="InventoryManager"]
+offset_left = 330.0
+offset_top = 197.0
+offset_right = 802.0
+offset_bottom = 450.0
+
+[node name="InventoryHotbar" type="VBoxContainer" parent="InventoryManager"]
+offset_left = 331.0
+offset_top = 469.0
+offset_right = 799.0
+offset_bottom = 509.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InventoryManager/InventoryHotbar"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="InventoryManager/InventoryHotbar/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="InventoryManager/InventoryHotbar/HBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="InventoryManager/InventoryHotbar/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="InventoryManager/InventoryHotbar/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+
+[node name="PanelContainer3" type="PanelContainer" parent="InventoryManager/InventoryHotbar/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="InventoryManager/InventoryHotbar/HBoxContainer/PanelContainer3"]
+layout_mode = 2
+
+[node name="PanelContainer4" type="PanelContainer" parent="InventoryManager/InventoryHotbar/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="InventoryManager/InventoryHotbar/HBoxContainer/PanelContainer4"]
+layout_mode = 2
+
+[node name="PanelContainer5" type="PanelContainer" parent="InventoryManager/InventoryHotbar/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="InventoryManager/InventoryHotbar/HBoxContainer/PanelContainer5"]
+layout_mode = 2
+
+[node name="PanelContainer6" type="PanelContainer" parent="InventoryManager/InventoryHotbar/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="InventoryManager/InventoryHotbar/HBoxContainer/PanelContainer6"]
+layout_mode = 2
+
+[node name="PanelContainer7" type="PanelContainer" parent="InventoryManager/InventoryHotbar/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="InventoryManager/InventoryHotbar/HBoxContainer/PanelContainer7"]
+layout_mode = 2
