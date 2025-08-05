@@ -11,3 +11,5 @@ enum Rarity {normal, magic, rare, epic, legendary}
 @export var grow_time : float
 @export var seed_amount : int
 @export_multiline var description : String
+var modifiers : Array[Dictionary] = []
+var max_amount_modifiers : int = 6
