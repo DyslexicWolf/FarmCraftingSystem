@@ -1,13 +1,16 @@
 extends HBoxContainer
+class_name Hotbar
+
+signal planted_seeds(cell_coords : Vector2i, item : ItemResource)
 
 @onready var slots = self.get_children()
-var tilemap : TileMapLayer
+var tile_map_layer : TileMapLayer
 var active_slot : int = 0
 var alpha : float
 
 func _ready():
 	update_highlight()
-	tilemap = get_node("/root/Game/TileMapLayer")
+	tile_map_layer = get_node("/root/Game/Farmland")
 
 func _input(event):
 	if event is InputEventMouseButton and event.is_pressed():
@@ -23,7 +26,7 @@ func _input(event):
 
 func update_highlight():
 	for i in slots.size():
-		alpha = 0.5 if i == active_slot else 1
+		alpha = 1 if i == active_slot else 0.5
 		slots[i].modulate = Color(1, 1, 1, alpha)
 
 func use_item():
@@ -33,12 +36,13 @@ func use_item():
 	
 	var mouse_pos: Vector2 = get_global_mouse_position()
 	
-	var local_pos = tilemap.to_local(mouse_pos)
-	var tile_coords = tilemap.local_to_map(local_pos)
-	var tile_id = tilemap.get_cell_source_id(tile_coords)
+	var local_pos = tile_map_layer.to_local(mouse_pos)
+	var tile_coords = tile_map_layer.local_to_map(local_pos)
+	var tile_id = tile_map_layer.get_cell_source_id(tile_coords)
 	
 	if tile_id == -1:
 		return
 	
-	if tile_id == 1:
+	if tile_id == 0:
 		print("farmland")
+		planted_seeds.emit(tile_coords, slot.get_child(0))

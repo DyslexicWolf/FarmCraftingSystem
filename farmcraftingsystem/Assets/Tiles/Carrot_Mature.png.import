@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3sspbuvapcud"
-path="res://.godot/imported/SweetBeet_Seeds.png-054257d77e2797921511db064279db62.ctex"
+uid="uid://bxcxx3anhjvxb"
+path="res://.godot/imported/Carrot_Mature.png-82b3d3b9f1b9f169ed9195538375f482.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/SweetBeet_Seeds.png"
-dest_files=["res://.godot/imported/SweetBeet_Seeds.png-054257d77e2797921511db064279db62.ctex"]
+source_file="res://Assets/Tiles/Carrot_Mature.png"
+dest_files=["res://.godot/imported/Carrot_Mature.png-82b3d3b9f1b9f169ed9195538375f482.ctex"]
 
 [params]
 

@@ -1,7 +1,16 @@
-[gd_scene load_steps=5 format=4 uid="uid://ccqmlkskll2ik"]
+[gd_scene load_steps=22 format=4 uid="uid://ccqmlkskll2ik"]
 
 [ext_resource type="PackedScene" uid="uid://br48fyjfckcy6" path="res://Scenes/Inventory.tscn" id="1_iukft"]
-[ext_resource type="Texture2D" uid="uid://cpqwnn4afa2eg" path="res://Assets/Farmland.png" id="2_gl6un"]
+[ext_resource type="Texture2D" uid="uid://cpqwnn4afa2eg" path="res://Assets/Tiles/Farmland.png" id="2_gl6un"]
+[ext_resource type="Texture2D" uid="uid://bymps77sa52l4" path="res://Assets/Tiles/Carrot_Growing_2.png" id="3_7lihs"]
+[ext_resource type="Texture2D" uid="uid://bxcxx3anhjvxb" path="res://Assets/Tiles/Carrot_Mature.png" id="4_fgofq"]
+[ext_resource type="Texture2D" uid="uid://cffhpeigmwoqc" path="res://Assets/Tiles/Carrot_Planted.png" id="5_2irst"]
+[ext_resource type="Texture2D" uid="uid://nvuse3oy6a8g" path="res://Assets/Tiles/Carrot_Growing_1.png" id="6_bf53h"]
+[ext_resource type="Texture2D" uid="uid://owftdlenu05d" path="res://Assets/Tiles/SweetBeet_Planted.png" id="7_71axn"]
+[ext_resource type="Texture2D" uid="uid://kbatmlpvyq4e" path="res://Assets/Tiles/SweetBeet_Growing_1.png" id="8_dahhg"]
+[ext_resource type="Texture2D" uid="uid://b4qvyoa74rtex" path="res://Assets/Tiles/SweetBeet_Growing_2.png" id="9_3so38"]
+[ext_resource type="Texture2D" uid="uid://dpsjm3mosetun" path="res://Assets/Tiles/SweetBeet_Mature.png" id="10_3cx6b"]
+[ext_resource type="Script" uid="uid://wt3fnnqxtha8" path="res://Scripts/Farmland.gd" id="11_dahhg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j5yw3"]
 resource_name = "Farmland"
@@ -9,14 +18,63 @@ texture = ExtResource("2_gl6un")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3so38"]
+texture = ExtResource("5_2irst")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3cx6b"]
+texture = ExtResource("6_bf53h")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_71axn"]
+texture = ExtResource("3_7lihs")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dahhg"]
+texture = ExtResource("4_fgofq")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wxwew"]
+texture = ExtResource("7_71axn")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_acvyw"]
+texture = ExtResource("8_dahhg")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_alh3a"]
+texture = ExtResource("9_3so38")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4q8tf"]
+texture = ExtResource("10_3cx6b")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_kldst"]
 tile_size = Vector2i(32, 32)
-sources/1 = SubResource("TileSetAtlasSource_j5yw3")
+sources/0 = SubResource("TileSetAtlasSource_j5yw3")
+sources/1 = SubResource("TileSetAtlasSource_3so38")
+sources/2 = SubResource("TileSetAtlasSource_3cx6b")
+sources/4 = SubResource("TileSetAtlasSource_dahhg")
+sources/3 = SubResource("TileSetAtlasSource_71axn")
+sources/5 = SubResource("TileSetAtlasSource_wxwew")
+sources/6 = SubResource("TileSetAtlasSource_acvyw")
+sources/7 = SubResource("TileSetAtlasSource_alh3a")
+sources/8 = SubResource("TileSetAtlasSource_4q8tf")
 
 [node name="Game" type="Node2D"]
 
 [node name="HUD" parent="." instance=ExtResource("1_iukft")]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAcAAkAAQAAAAAAAAAcAAoAAQAAAAAAAAAcAAsAAQAAAAAAAAAcAAwAAQAAAAAAAAAcAA0AAQAAAAAAAAAcAA4AAQAAAAAAAAAdAAkAAQAAAAAAAAAdAAoAAQAAAAAAAAAdAAsAAQAAAAAAAAAdAAwAAQAAAAAAAAAdAA0AAQAAAAAAAAAeAAkAAQAAAAAAAAAeAAoAAQAAAAAAAAAeAAsAAQAAAAAAAAAeAAwAAQAAAAAAAAAeAA0AAQAAAAAAAAAeAA4AAQAAAAAAAAAdAA4AAQAAAAAAAAAfAA4AAQAAAAAAAAAfAA0AAQAAAAAAAAAfAAwAAQAAAAAAAAAfAAsAAQAAAAAAAAAfAAoAAQAAAAAAAAAfAAkAAQAAAAAAAAAfAAgAAQAAAAAAAAAcAAgAAQAAAAAAAAAdAAgAAQAAAAAAAAAeAAgAAQAAAAAAAAAgAAgAAQAAAAAAAAAgAAkAAQAAAAAAAAAgAAoAAQAAAAAAAAAgAAsAAQAAAAAAAAAgAAwAAQAAAAAAAAAgAA0AAQAAAAAAAAAgAA4AAQAAAAAAAAAcAA8AAQAAAAAAAAAdAA8AAQAAAAAAAAAeAA8AAQAAAAAAAAAfAA8AAQAAAAAAAAAgAA8AAQAAAAAAAAAhAA8AAQAAAAAAAAAhAA4AAQAAAAAAAAAhAA0AAQAAAAAAAAAhAAwAAQAAAAAAAAAhAAsAAQAAAAAAAAAhAAoAAQAAAAAAAAAhAAkAAQAAAAAAAAAhAAgAAQAAAAAAAAAhAAcAAQAAAAAAAAAgAAcAAQAAAAAAAAAfAAcAAQAAAAAAAAAeAAcAAQAAAAAAAAAdAAcAAQAAAAAAAAAcAAcAAQAAAAAAAAA=")
+[node name="Farmland" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdAA0AAAAAAAAAAAAdAA4AAAAAAAAAAAAeAAsAAAAAAAAAAAAfAAsAAAAAAAAAAAAgAAsAAAAAAAAAAAAeAAwAAAAAAAAAAAAfAAwAAAAAAAAAAAAgAAwAAAAAAAAAAAAeAA0AAAAAAAAAAAAfAA0AAAAAAAAAAAAgAA0AAAAAAAAAAAAeAA4AAAAAAAAAAAAfAA4AAAAAAAAAAAAgAA4AAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_kldst")
+script = ExtResource("11_dahhg")
