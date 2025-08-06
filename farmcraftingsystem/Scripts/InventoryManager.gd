@@ -7,9 +7,10 @@ var inventory_size = 21
 var inventory : GridContainer
 var inventory_background : Panel
 var crafting_background : Panel
-#var temp_items_load_fortesting = [
-	#"res://Resources/SpearResource.tres",
-#]
+var temp_items_load_fortesting = [
+	"res://Resources/Seeds/CarrotSeeds.tres",
+	"res://Resources/Seeds/SweetBeetSeeds.tres",
+]
 
 func _ready():
 	inventory = $InventoryBackground/Inventory
@@ -21,11 +22,11 @@ func _ready():
 		inventory.add_child(slot)
 		slot.connect("item_unequipped", _on_item_unequipped)
 	
-	#for i in temp_items_load_fortesting.size():
-		#var item_resource = load(temp_items_load_fortesting[i])
-		#var item := InventoryItem.new()
-		#item.initialize(item_resource)
-		#inventory.get_child(i).add_child(item)
+	for i in temp_items_load_fortesting.size():
+		var item_resource = load(temp_items_load_fortesting[i])
+		var item := InventoryItem.new()
+		item.initialize(item_resource)
+		inventory.get_child(i).add_child(item)
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("open_inventory") and inventory_background.visible == false:

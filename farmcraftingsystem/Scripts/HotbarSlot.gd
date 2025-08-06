@@ -1,10 +1,5 @@
-extends PanelContainer
-class_name InventorySlot
-
-signal item_unequipped(item : ItemResource)
-
-func initialize(cms: Vector2) -> void:
-	custom_minimum_size = cms
+extends InventorySlot
+class_name HotbarSlot
 
 # Checks if the dragged item can be dropped into this slot
 func _can_drop_data(_at_position: Vector2, data: Variant):
@@ -15,7 +10,7 @@ func _can_drop_data(_at_position: Vector2, data: Variant):
 func _drop_data(_at_position: Vector2, data: Variant):
 	if data is InventoryItem:
 		var old_slot = data.get_parent()
-		if self is InventorySlot or old_slot is InventorySlot or old_slot is CraftingSlot or old_slot is HotbarSlot:
+		if self is HotbarSlot or old_slot is HotbarSlot or old_slot is CraftingSlot or old_slot is InventorySlot:
 			if old_slot == self:
 				return
 			
@@ -34,3 +29,8 @@ func _drop_data(_at_position: Vector2, data: Variant):
 			if old_slot is CraftingSlot:
 				item_unequipped.emit(data)
 			add_child(data)
+
+func has_item() -> bool:
+	if get_child_count() == 0:
+		return false
+	return true

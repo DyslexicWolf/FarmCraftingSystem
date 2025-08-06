@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://br48fyjfckcy6"]
+[gd_scene load_steps=6 format=3 uid="uid://br48fyjfckcy6"]
 
 [ext_resource type="Script" uid="uid://c6e1vgdojhuw3" path="res://Scripts/InventoryManager.gd" id="1_ersrd"]
+[ext_resource type="Script" uid="uid://c6dgl6kfxt5xi" path="res://Scripts/HotbarSlot.gd" id="2_1pi3o"]
+[ext_resource type="Script" uid="uid://cxostsw0s0r1e" path="res://Scripts/Hotbar.gd" id="2_2hjaa"]
 [ext_resource type="Script" uid="uid://dp5c1wbl46e6l" path="res://Scripts/ModifierCrafting.gd" id="2_4v8qb"]
 [ext_resource type="Script" uid="uid://bcgtvfppxcj7r" path="res://Scripts/CraftingSlot.gd" id="3_4v8qb"]
 
@@ -35,70 +37,54 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 7
 
-[node name="Hotbar" type="VBoxContainer" parent="."]
+[node name="Hotbar" type="HBoxContainer" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -236.0
-offset_top = -79.0
+offset_top = -74.0
 offset_right = 236.0
-offset_bottom = -15.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("2_2hjaa")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Hotbar"]
-layout_mode = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="Hotbar/HBoxContainer"]
+[node name="PanelContainer1" type="PanelContainer" parent="Hotbar"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+script = ExtResource("2_1pi3o")
 
-[node name="TextureRect" type="TextureRect" parent="Hotbar/HBoxContainer/PanelContainer"]
-layout_mode = 2
-
-[node name="PanelContainer2" type="PanelContainer" parent="Hotbar/HBoxContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="Hotbar"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+script = ExtResource("2_1pi3o")
 
-[node name="TextureRect" type="TextureRect" parent="Hotbar/HBoxContainer/PanelContainer2"]
-layout_mode = 2
-
-[node name="PanelContainer3" type="PanelContainer" parent="Hotbar/HBoxContainer"]
+[node name="PanelContainer3" type="PanelContainer" parent="Hotbar"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+script = ExtResource("2_1pi3o")
 
-[node name="TextureRect" type="TextureRect" parent="Hotbar/HBoxContainer/PanelContainer3"]
-layout_mode = 2
-
-[node name="PanelContainer4" type="PanelContainer" parent="Hotbar/HBoxContainer"]
+[node name="PanelContainer4" type="PanelContainer" parent="Hotbar"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+script = ExtResource("2_1pi3o")
 
-[node name="TextureRect" type="TextureRect" parent="Hotbar/HBoxContainer/PanelContainer4"]
-layout_mode = 2
-
-[node name="PanelContainer5" type="PanelContainer" parent="Hotbar/HBoxContainer"]
+[node name="PanelContainer5" type="PanelContainer" parent="Hotbar"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+script = ExtResource("2_1pi3o")
 
-[node name="TextureRect" type="TextureRect" parent="Hotbar/HBoxContainer/PanelContainer5"]
-layout_mode = 2
-
-[node name="PanelContainer6" type="PanelContainer" parent="Hotbar/HBoxContainer"]
+[node name="PanelContainer6" type="PanelContainer" parent="Hotbar"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+script = ExtResource("2_1pi3o")
 
-[node name="TextureRect" type="TextureRect" parent="Hotbar/HBoxContainer/PanelContainer6"]
-layout_mode = 2
-
-[node name="PanelContainer7" type="PanelContainer" parent="Hotbar/HBoxContainer"]
+[node name="PanelContainer7" type="PanelContainer" parent="Hotbar"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Hotbar/HBoxContainer/PanelContainer7"]
-layout_mode = 2
+script = ExtResource("2_1pi3o")
 
 [node name="CraftingBackground" type="Panel" parent="."]
 offset_left = 45.0
@@ -139,6 +125,13 @@ offset_bottom = 262.0
 text = "Add 1 mod"
 
 [connection signal="crafting_item_unequipped" from="." to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
+[connection signal="item_unequipped" from="Hotbar/PanelContainer1" to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
+[connection signal="item_unequipped" from="Hotbar/PanelContainer2" to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
+[connection signal="item_unequipped" from="Hotbar/PanelContainer3" to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
+[connection signal="item_unequipped" from="Hotbar/PanelContainer4" to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
+[connection signal="item_unequipped" from="Hotbar/PanelContainer5" to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
+[connection signal="item_unequipped" from="Hotbar/PanelContainer6" to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
+[connection signal="item_unequipped" from="Hotbar/PanelContainer7" to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
 [connection signal="item_equipped" from="CraftingBackground/CraftingSlot" to="CraftingBackground" method="_on_crafting_slot_item_equipped"]
 [connection signal="item_unequipped" from="CraftingBackground/CraftingSlot" to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
 [connection signal="pressed" from="CraftingBackground/AllNewModifiersButton" to="CraftingBackground" method="_on_all_new_modifiers_button_pressed"]

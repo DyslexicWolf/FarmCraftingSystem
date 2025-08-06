@@ -1,7 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccqmlkskll2ik"]
+[gd_scene load_steps=5 format=4 uid="uid://ccqmlkskll2ik"]
 
 [ext_resource type="PackedScene" uid="uid://br48fyjfckcy6" path="res://Scenes/Inventory.tscn" id="1_iukft"]
+[ext_resource type="Texture2D" uid="uid://cpqwnn4afa2eg" path="res://Assets/Farmland.png" id="2_gl6un"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j5yw3"]
+resource_name = "Farmland"
+texture = ExtResource("2_gl6un")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_kldst"]
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_j5yw3")
 
 [node name="Game" type="Node2D"]
 
 [node name="HUD" parent="." instance=ExtResource("1_iukft")]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAcAAkAAQAAAAAAAAAcAAoAAQAAAAAAAAAcAAsAAQAAAAAAAAAcAAwAAQAAAAAAAAAcAA0AAQAAAAAAAAAcAA4AAQAAAAAAAAAdAAkAAQAAAAAAAAAdAAoAAQAAAAAAAAAdAAsAAQAAAAAAAAAdAAwAAQAAAAAAAAAdAA0AAQAAAAAAAAAeAAkAAQAAAAAAAAAeAAoAAQAAAAAAAAAeAAsAAQAAAAAAAAAeAAwAAQAAAAAAAAAeAA0AAQAAAAAAAAAeAA4AAQAAAAAAAAAdAA4AAQAAAAAAAAAfAA4AAQAAAAAAAAAfAA0AAQAAAAAAAAAfAAwAAQAAAAAAAAAfAAsAAQAAAAAAAAAfAAoAAQAAAAAAAAAfAAkAAQAAAAAAAAAfAAgAAQAAAAAAAAAcAAgAAQAAAAAAAAAdAAgAAQAAAAAAAAAeAAgAAQAAAAAAAAAgAAgAAQAAAAAAAAAgAAkAAQAAAAAAAAAgAAoAAQAAAAAAAAAgAAsAAQAAAAAAAAAgAAwAAQAAAAAAAAAgAA0AAQAAAAAAAAAgAA4AAQAAAAAAAAAcAA8AAQAAAAAAAAAdAA8AAQAAAAAAAAAeAA8AAQAAAAAAAAAfAA8AAQAAAAAAAAAgAA8AAQAAAAAAAAAhAA8AAQAAAAAAAAAhAA4AAQAAAAAAAAAhAA0AAQAAAAAAAAAhAAwAAQAAAAAAAAAhAAsAAQAAAAAAAAAhAAoAAQAAAAAAAAAhAAkAAQAAAAAAAAAhAAgAAQAAAAAAAAAhAAcAAQAAAAAAAAAgAAcAAQAAAAAAAAAfAAcAAQAAAAAAAAAeAAcAAQAAAAAAAAAdAAcAAQAAAAAAAAAcAAcAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_kldst")

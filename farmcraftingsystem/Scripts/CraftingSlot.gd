@@ -6,7 +6,7 @@ signal item_equipped(item : ItemResource)
 func _drop_data(_at_position: Vector2, data: Variant):
 	if data is InventoryItem:
 		var old_slot = data.get_parent()
-		if self is CraftingSlot or old_slot is CraftingSlot or old_slot is InventorySlot:
+		if self is CraftingSlot or old_slot is CraftingSlot or old_slot is InventorySlot or old_slot is HotbarSlot:
 			if old_slot == self:
 				return
 			
