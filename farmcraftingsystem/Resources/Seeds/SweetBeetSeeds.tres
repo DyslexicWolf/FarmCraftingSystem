@@ -1,20 +1,22 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://c0cvihqvmi7kp"]
+[gd_resource type="Resource" script_class="SeedsResource" load_steps=4 format=3 uid="uid://c4vmk6jd62wlg"]
 
-[ext_resource type="Script" uid="uid://dvbx7n47gi1cy" path="res://Scripts/ItemResource.gd" id="1_oondd"]
+[ext_resource type="Script" uid="uid://co4ncy88yfbxr" path="res://Scripts/SeedsResource.gd" id="1_jr2m1"]
+[ext_resource type="Resource" uid="uid://ba84gw3edc3gm" path="res://Resources/Crops/SweetBeetCrop.tres" id="1_lw04h"]
 [ext_resource type="Texture2D" uid="uid://ds3euy7hhxpuq" path="res://Assets/Seeds/SweetBeet_Seeds.png" id="2_lw04h"]
 
 [resource]
-script = ExtResource("1_oondd")
-name = "SweetBeetSeeds"
-rarity = 0
-ui_texture = ExtResource("2_lw04h")
+script = ExtResource("1_jr2m1")
 yield_multiplier = 1
 crit_harvest_chance = 0
 grow_time = 15.0
-seed_amount = 2
+seed_amount = 1
 planted_tile_id = 5
 growing1_tile_id = 6
 growing2_tile_id = 7
 mature_tile_id = 8
+crop_resource = ExtResource("1_lw04h")
+name = "Sweet Beet Seeds"
+rarity = 0
+ui_texture = ExtResource("2_lw04h")
 description = "Normal sweet beet seeds"
-metadata/_custom_type_script = "uid://dvbx7n47gi1cy"
+metadata/_custom_type_script = "uid://co4ncy88yfbxr"

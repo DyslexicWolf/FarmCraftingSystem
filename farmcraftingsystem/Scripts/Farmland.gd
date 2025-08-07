@@ -25,7 +25,7 @@ func _on_planted_seeds(cell_coords, item_data):
 		"stage": 0
 	}
 
-func _on_growth_stage(cell_coords : Vector2i, item_data : ItemResource):
+func _on_growth_stage(cell_coords : Vector2i, item_data : SeedsResource):
 	var cell_data = planted_cells.get(cell_coords)
 	if cell_data == null:
 		return
