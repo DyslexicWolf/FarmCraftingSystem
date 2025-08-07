@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_j076i")
+max_stack_count = 500
 name = "Carrots"
 rarity = 0
 ui_texture = ExtResource("2_5s24b")

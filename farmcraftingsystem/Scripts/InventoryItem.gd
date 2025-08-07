@@ -2,16 +2,31 @@ extends TextureRect
 class_name InventoryItem
 
 @export var item_data : ItemResource
+var stack_count : int = 1
 
 func _ready() -> void:
 	expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 
-func initialize(d: ItemResource) -> void:
+func initialize(d: ItemResource, count: int = 1) -> void:
 	item_data = d
+	stack_count = count
+	texture = item_data.ui_texture
+	update_tooltip()
+
+func update_tooltip():
 	if item_data != null:
-		texture = item_data.ui_texture
-		tooltip_text = "%s\n%s" % [item_data.name, item_data.description]
+		if item_data is CropResource:
+			tooltip_text = "%s x%d\n%s" %  [item_data.name, stack_count, item_data.description]
+		if item_data is SeedsResource:
+			tooltip_text = "%s %s" %  [item_data.name, item_data.description]
+
+func is_stackable_with(other: InventoryItem) -> bool:
+	return item_data is CropResource and other.item_data == item_data
+
+func add_to_stack(amount : int):
+	stack_count += amount
+	update_tooltip()
 
 func _get_drag_data(at_position: Vector2):
 	set_drag_preview(make_drag_preview(at_position))

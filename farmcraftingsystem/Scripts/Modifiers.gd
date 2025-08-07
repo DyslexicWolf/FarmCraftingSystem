@@ -12,6 +12,10 @@ var normal_modifiers : Dictionary = {
 	"crit_up_3": {"name": "crit_up", "rank": 3, "value": 12, "weight": 15},
 	"crit_up_2": {"name": "crit_up", "rank": 2, "value": 24, "weight": 10},
 	"crit_up_1": {"name": "crit_up", "rank": 1, "value": 26, "weight": 5},
+	
+	"use_amount_3": {"name": "use_amount", "rank": 3, "value": 2, "weight": 15},
+	"use_amount_2": {"name": "use_amount", "rank": 2, "value": 4, "weight": 10},
+	"use_amount_1": {"name": "use_amount", "rank": 1, "value": 8, "weight": 5},
 }
 
 func get_random_modifier(excluded_modifiers : Array) -> Dictionary:

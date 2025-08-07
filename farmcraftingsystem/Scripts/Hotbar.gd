@@ -48,5 +48,7 @@ func use_item():
 		return
 	
 	if tile_id == 0:
-		slot.get_child(0).queue_free()
+		item.item_data.use_amount -= 1
+		if item.item_data.use_amount == 0:
+			slot.get_child(0).queue_free()
 		planted_seeds.emit(tile_coords, item.item_data)
