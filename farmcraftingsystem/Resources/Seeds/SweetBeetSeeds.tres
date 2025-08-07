@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://c0cvihqvmi7kp"]
 
 [ext_resource type="Script" uid="uid://dvbx7n47gi1cy" path="res://Scripts/ItemResource.gd" id="1_oondd"]
-[ext_resource type="Texture2D" uid="uid://d3sspbuvapcud" path="res://Assets/Seeds/SweetBeet_Seeds.png" id="2_lw04h"]
+[ext_resource type="Texture2D" uid="uid://ds3euy7hhxpuq" path="res://Assets/Seeds/SweetBeet_Seeds.png" id="2_lw04h"]
 
 [resource]
 script = ExtResource("1_oondd")
@@ -12,6 +12,9 @@ yield_multiplier = 1
 crit_harvest_chance = 0
 grow_time = 15.0
 seed_amount = 2
-seed_tile_id = 5
+planted_tile_id = 5
+growing1_tile_id = 6
+growing2_tile_id = 7
+mature_tile_id = 8
 description = "Normal sweet beet seeds"
 metadata/_custom_type_script = "uid://dvbx7n47gi1cy"

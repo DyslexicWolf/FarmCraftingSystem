@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://bxcxx3anhjvxb" path="res://Assets/Tiles/Carrot_Mature.png" id="4_fgofq"]
 [ext_resource type="Texture2D" uid="uid://cffhpeigmwoqc" path="res://Assets/Tiles/Carrot_Planted.png" id="5_2irst"]
 [ext_resource type="Texture2D" uid="uid://nvuse3oy6a8g" path="res://Assets/Tiles/Carrot_Growing_1.png" id="6_bf53h"]
-[ext_resource type="Texture2D" uid="uid://owftdlenu05d" path="res://Assets/Tiles/SweetBeet_Planted.png" id="7_71axn"]
-[ext_resource type="Texture2D" uid="uid://kbatmlpvyq4e" path="res://Assets/Tiles/SweetBeet_Growing_1.png" id="8_dahhg"]
-[ext_resource type="Texture2D" uid="uid://b4qvyoa74rtex" path="res://Assets/Tiles/SweetBeet_Growing_2.png" id="9_3so38"]
-[ext_resource type="Texture2D" uid="uid://dpsjm3mosetun" path="res://Assets/Tiles/SweetBeet_Mature.png" id="10_3cx6b"]
+[ext_resource type="Texture2D" uid="uid://kml3mt80iomy" path="res://Assets/Tiles/SweetBeet_Planted.png" id="7_71axn"]
+[ext_resource type="Texture2D" uid="uid://wqh3fb6ju2tr" path="res://Assets/Tiles/SweetBeet_Growing_1.png" id="8_dahhg"]
+[ext_resource type="Texture2D" uid="uid://babl58ve0pggp" path="res://Assets/Tiles/SweetBeet_Growing_2.png" id="9_3so38"]
+[ext_resource type="Texture2D" uid="uid://caq4gnwjlvgj5" path="res://Assets/Tiles/SweetBeet_Mature.png" id="10_dahhg"]
 [ext_resource type="Script" uid="uid://wt3fnnqxtha8" path="res://Scripts/Farmland.gd" id="11_dahhg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j5yw3"]
@@ -54,7 +54,7 @@ texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4q8tf"]
-texture = ExtResource("10_3cx6b")
+texture = ExtResource("10_dahhg")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 

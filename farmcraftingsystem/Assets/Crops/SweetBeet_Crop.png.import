@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wqh3fb6ju2tr"
-path="res://.godot/imported/SweetBeet_Growing_1.png-dc1154d814ddbadebde2e7605c665628.ctex"
+uid="uid://q5cmra8lnsj2"
+path="res://.godot/imported/SweetBeet_Crop.png-39f3b51b71ef111592f202851585ba33.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles/SweetBeet_Growing_1.png"
-dest_files=["res://.godot/imported/SweetBeet_Growing_1.png-dc1154d814ddbadebde2e7605c665628.ctex"]
+source_file="res://Assets/Crops/SweetBeet_Crop.png"
+dest_files=["res://.godot/imported/SweetBeet_Crop.png-39f3b51b71ef111592f202851585ba33.ctex"]
 
 [params]
 

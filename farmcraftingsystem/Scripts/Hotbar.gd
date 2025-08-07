@@ -45,4 +45,6 @@ func use_item():
 	
 	if tile_id == 0:
 		print("farmland")
-		planted_seeds.emit(tile_coords, slot.get_child(0))
+		var item = slot.get_child(0)
+		slot.get_child(0).queue_free()
+		planted_seeds.emit(tile_coords, item.item_data)
