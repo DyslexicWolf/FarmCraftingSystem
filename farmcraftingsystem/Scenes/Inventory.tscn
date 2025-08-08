@@ -51,37 +51,37 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("2_2hjaa")
 
-[node name="PanelContainer1" type="PanelContainer" parent="Hotbar"]
+[node name="PanelContainer1" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
 
-[node name="PanelContainer2" type="PanelContainer" parent="Hotbar"]
+[node name="PanelContainer2" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
 
-[node name="PanelContainer3" type="PanelContainer" parent="Hotbar"]
+[node name="PanelContainer3" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
 
-[node name="PanelContainer4" type="PanelContainer" parent="Hotbar"]
+[node name="PanelContainer4" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
 
-[node name="PanelContainer5" type="PanelContainer" parent="Hotbar"]
+[node name="PanelContainer5" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
 
-[node name="PanelContainer6" type="PanelContainer" parent="Hotbar"]
+[node name="PanelContainer6" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
 
-[node name="PanelContainer7" type="PanelContainer" parent="Hotbar"]
+[node name="PanelContainer7" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
@@ -93,7 +93,7 @@ offset_right = 268.0
 offset_bottom = 468.0
 script = ExtResource("2_4v8qb")
 
-[node name="CraftingSlot" type="PanelContainer" parent="CraftingBackground"]
+[node name="CraftingSlot" type="PanelContainer" parent="CraftingBackground" groups=["CraftingSlot"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

@@ -20,12 +20,13 @@ func _ready():
 		var slot := InventorySlot.new()
 		slot.initialize(Vector2(64, 64))
 		inventory.add_child(slot)
+		slot.add_to_group("InventorySlot")
 		slot.connect("item_unequipped", _on_item_unequipped)
 	
 	for i in temp_items_load_fortesting.size():
 		var item_resource = load(temp_items_load_fortesting[i])
 		var item := InventoryItem.new()
-		item.initialize(item_resource)
+		item.initialize(item_resource, self)
 		inventory.get_child(i).add_child(item)
 
 func _input(_event: InputEvent) -> void:
@@ -38,9 +39,43 @@ func _input(_event: InputEvent) -> void:
 	elif Input.is_action_just_pressed("close_crafting_menu") and crafting_background.visible == true:
 		crafting_background.visible = false
 	
-	#unsure on where and how to implement this logic, here or in inventory item script
-	if Input.is_action_pressed("shift") and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		pass
+func shift_click_item(item: InventoryItem) -> void:
+	var current_slot = item.get_parent()
+	var target_slot = null
+
+	if current_slot.is_in_group("CraftingSlot") and inventory_background.visible:
+		target_slot = find_empty_inventory_slot()
+	elif current_slot.is_in_group("InventorySlot"):
+		if crafting_background.visible:
+			target_slot = find_empty_crafting_slot()
+		else:
+			target_slot = find_empty_hotbar_slot()
+	elif current_slot.is_in_group("HotbarSlot") and inventory_background.visible:
+		target_slot = find_empty_inventory_slot()
+	
+	if target_slot:
+		current_slot.remove_child(item)
+		target_slot.add_child(item)
+
+func find_empty_inventory_slot() -> InventorySlot:
+	for slot in inventory.get_children():
+		if slot.get_child_count() == 0:
+			return slot
+	return null
+
+func find_empty_crafting_slot() -> InventorySlot:
+	var crafting_slot = crafting_background.get_child(0)
+	if crafting_slot:
+		if crafting_slot.get_child_count() == 0:
+			return crafting_slot
+	return null
+
+func find_empty_hotbar_slot() -> InventorySlot:
+	var hotbar_slots = $Hotbar.get_children()
+	for slot in hotbar_slots:
+		if slot.get_child_count() == 0:
+			return slot
+	return null
 
 func _on_item_unequipped(item: InventoryItem) -> void:
 	crafting_item_unequipped.emit(item)
@@ -51,10 +86,10 @@ func _on_picked_up_item(picked_up_item: ItemResource) -> void:
 		var slot = inventory.get_child(i)
 		if slot.get_child_count() == 0:
 			var item := InventoryItem.new()
-			item.initialize(picked_up_item)
+			item.initialize(picked_up_item, self)
 			slot.add_child(item)
 			return
 	
 	var new_item := InventoryItem.new()
-	new_item.initialize(picked_up_item)
+	new_item.initialize(picked_up_item, self)
 	inventory.get_child(0).add_child(new_item)

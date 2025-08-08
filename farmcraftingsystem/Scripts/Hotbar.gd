@@ -33,9 +33,11 @@ func update_highlight():
 
 func use_item():
 	var slot = slots[active_slot]
+	if not slot.has_item():
+		return
 	var item = slot.get_child(0)
 	
-	if not slot.has_item() or item.item_data is not SeedsResource:
+	if item.item_data is not SeedsResource:
 		return
 	
 	var world_pos: Vector2 = camera.get_global_mouse_position()
