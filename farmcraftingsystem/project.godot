@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Modifiers="*res://Scripts/Modifiers.gd"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/project_time/plugin.cfg")
+
 [global_group]
 
 InventorySlot="Inventoryslots group"
