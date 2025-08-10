@@ -1,11 +1,12 @@
 extends CharacterBody2D
 class_name Player
 
+signal picked_up_item(item: ItemResource)
+
 var speed = 130.0
 var direction
 var isAttacking: bool = false
 @onready var player_animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-
 
 func _physics_process(_delta: float):
 	get_input()
@@ -30,3 +31,6 @@ func change_animation():
 		player_animated_sprite.play("run_side")
 	else:
 		player_animated_sprite.play("idle")
+
+func on_picked_up_item(item: ItemResource):
+	picked_up_item.emit(item)

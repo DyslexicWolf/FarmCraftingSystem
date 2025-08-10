@@ -36,12 +36,15 @@ func update_tooltip():
 				modifiers_text = modifiers_text.substr(0, modifiers_text.length() - 2)
 			tooltip_text = "%s\n%s\n%s" % [item_data.name, modifiers_text, item_data.description]
 
-func is_stackable_with(other: InventoryItem) -> bool:
-	return item_data is CropResource and other.item_data == item_data
+func is_stackable_with(item: CropResource) -> bool:
+	return item_data is CropResource and item == item_data
 
-func add_to_stack(amount : int):
-	stack_count += amount
-	update_tooltip()
+func add_to_stack(amount : int) -> bool:
+	if item_data is CropResource and stack_count < item_data.max_stack_count:
+		stack_count += amount
+		update_tooltip()
+		return true
+	return false
 
 func _get_drag_data(at_position: Vector2):
 	set_drag_preview(make_drag_preview(at_position))

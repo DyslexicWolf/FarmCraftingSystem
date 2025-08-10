@@ -16,6 +16,7 @@ func _ready():
 	inventory = $InventoryBackground/Inventory
 	inventory_background = $InventoryBackground
 	crafting_background = $CraftingBackground
+	
 	for i in inventory_size:
 		var slot := InventorySlot.new()
 		slot.initialize(Vector2(64, 64))
@@ -84,12 +85,16 @@ func _on_picked_up_item(picked_up_item: ItemResource) -> void:
 	# Check if there is an empty slot in the inventory
 	for i in range(inventory.get_child_count()):
 		var slot = inventory.get_child(i)
+		if slot.get_child_count() == 1:
+			var item = slot.get_child(0)
+			if item.is_stackable_with(picked_up_item):
+				if item.add_to_stack(1):
+					return
+	
+	for i in range(inventory.get_child_count()):
+		var slot = inventory.get_child(i)
 		if slot.get_child_count() == 0:
 			var item := InventoryItem.new()
 			item.initialize(picked_up_item, self)
 			slot.add_child(item)
 			return
-	
-	var new_item := InventoryItem.new()
-	new_item.initialize(picked_up_item, self)
-	inventory.get_child(0).add_child(new_item)
