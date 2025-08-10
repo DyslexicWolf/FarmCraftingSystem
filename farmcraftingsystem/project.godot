@@ -17,7 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Modifiers="*res://Scripts/Modifiers.gd"
+Modifiers="*res://Scripts/Globals/Modifiers.gd"
+CropPickups="*res://Scripts/Globals/CropPickups.gd"
 
 [editor_plugins]
 

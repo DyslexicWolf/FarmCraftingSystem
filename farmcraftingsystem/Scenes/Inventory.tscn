@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://br48fyjfckcy6"]
 
-[ext_resource type="Script" uid="uid://c6e1vgdojhuw3" path="res://Scripts/InventoryManager.gd" id="1_ersrd"]
-[ext_resource type="Script" uid="uid://c6dgl6kfxt5xi" path="res://Scripts/HotbarSlot.gd" id="2_1pi3o"]
-[ext_resource type="Script" uid="uid://cxostsw0s0r1e" path="res://Scripts/Hotbar.gd" id="2_2hjaa"]
+[ext_resource type="Script" uid="uid://c6e1vgdojhuw3" path="res://Scripts/UI/InventoryManager.gd" id="1_ersrd"]
+[ext_resource type="Script" uid="uid://c6dgl6kfxt5xi" path="res://Scripts/UI/HotbarSlot.gd" id="2_1pi3o"]
+[ext_resource type="Script" uid="uid://cxostsw0s0r1e" path="res://Scripts/UI/Hotbar.gd" id="2_2hjaa"]
 [ext_resource type="Script" uid="uid://dp5c1wbl46e6l" path="res://Scripts/ModifierCrafting.gd" id="2_4v8qb"]
-[ext_resource type="Script" uid="uid://bcgtvfppxcj7r" path="res://Scripts/CraftingSlot.gd" id="3_4v8qb"]
+[ext_resource type="Script" uid="uid://bcgtvfppxcj7r" path="res://Scripts/UI/CraftingSlot.gd" id="3_4v8qb"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_ersrd")

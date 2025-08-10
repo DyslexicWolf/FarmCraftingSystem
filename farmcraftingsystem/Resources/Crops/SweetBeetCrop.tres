@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CropResource" load_steps=3 format=3 uid="uid://ba84gw3edc3gm"]
 
-[ext_resource type="Script" uid="uid://ywoh453k7r1s" path="res://Scripts/CropResource.gd" id="1_eawj5"]
+[ext_resource type="Script" uid="uid://ywoh453k7r1s" path="res://Resources/ScriptBases/CropResource.gd" id="1_eawj5"]
 [ext_resource type="Texture2D" uid="uid://q5cmra8lnsj2" path="res://Assets/Crops/SweetBeet_Crop.png" id="2_ty6jr"]
 
 [resource]
