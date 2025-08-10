@@ -28,16 +28,16 @@ func _input(event):
 
 func update_highlight():
 	for i in slots.size():
-		alpha = 1 if i == active_slot else 0.5
+		alpha = 1.0 if i == active_slot else 0.5
 		slots[i].modulate = Color(1, 1, 1, alpha)
 
 func use_item():
 	var slot = slots[active_slot]
 	if not slot.has_item():
 		return
-	var item = slot.get_child(0)
+	var inventory_item = slot.get_child(0)
 	
-	if item.item_data is not SeedsResource:
+	if inventory_item.item_data is not SeedsResource:
 		return
 	
 	var world_pos: Vector2 = camera.get_global_mouse_position()
@@ -50,7 +50,7 @@ func use_item():
 		return
 	
 	if tile_id == 0:
-		item.item_data.use_amount -= 1
-		if item.item_data.use_amount == 0:
+		inventory_item.item_data.use_amount -= 1
+		if inventory_item.item_data.use_amount == 0:
 			slot.get_child(0).queue_free()
-		planted_seeds.emit(tile_coords, item.item_data)
+		planted_seeds.emit(tile_coords, inventory_item.item_data)

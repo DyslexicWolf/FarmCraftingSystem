@@ -1,32 +1,33 @@
 extends Node
 
 var normal_modifiers : Dictionary = {
-	"yield_up_3": {"name": "yield_up", "rank": 3, "value": 3, "weight": 10},
-	"yield_up_2": {"name": "yield_up", "rank": 2, "value": 7, "weight": 5},
-	"yield_up_1": {"name": "yield_up", "rank": 1, "value": 11, "weight": 2},
+	yield_up_3 = {category = "yield", rank = 3, value = 3, weight = 10},
+	yield_up_2 = {category = "yield", rank = 2, value = 7, weight = 5},
+	yield_up_1 = {category = "yield", rank = 1, value = 11, weight = 2},
+
+	seeds_up_3 = {category = "seeds", rank = 3, value = 2, weight = 12},
+	seeds_up_2 = {category = "seeds", rank = 2, value = 4, weight = 6},
+	seeds_up_1 = {category = "seeds", rank = 1, value = 7, weight = 3},
+
+	crit_up_3 = {category = "crit_chance", rank = 3, value = 12, weight = 15},
+	crit_up_2 = {category = "crit_chance", rank = 2, value = 24, weight = 10},
+	crit_up_1 = {category = "crit_chance", rank = 1, value = 26, weight = 5},
 	
-	"seeds_up_3": {"name": "seeds_up", "rank": 3, "value": 2, "weight": 12},
-	"seeds_up_2": {"name": "seeds_up", "rank": 2, "value": 4, "weight": 6},
-	"seeds_up_1": {"name": "seeds_up", "rank": 1, "value": 7, "weight": 3},
-	
-	"crit_up_3": {"name": "crit_up", "rank": 3, "value": 12, "weight": 15},
-	"crit_up_2": {"name": "crit_up", "rank": 2, "value": 24, "weight": 10},
-	"crit_up_1": {"name": "crit_up", "rank": 1, "value": 26, "weight": 5},
-	
-	"use_amount_3": {"name": "use_amount", "rank": 3, "value": 2, "weight": 15},
-	"use_amount_2": {"name": "use_amount", "rank": 2, "value": 4, "weight": 10},
-	"use_amount_1": {"name": "use_amount", "rank": 1, "value": 8, "weight": 5},
+	use_amount_3 = {category = "uses", rank = 3, value = 2, weight = 15},
+	use_amount_2 = {category = "uses", rank = 2, value = 4, weight = 10},
+	use_amount_1 = {category = "uses", rank = 1, value = 8, weight = 5},
 }
 
-func get_random_modifier(excluded_modifiers : Array) -> Dictionary:
+func get_random_modifier(excluded_modifiers : Array[String]) -> String:
 	var total_weight = 0
 	for key in normal_modifiers.keys():
 		if key in excluded_modifiers:
 			continue
 		total_weight += normal_modifiers[key]["weight"]
 	
+	print("Total weight of valid modifiers: ", total_weight)
 	if total_weight == 0:
-		return {} #no valid modifiers left
+		return ""
 	
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
@@ -38,6 +39,6 @@ func get_random_modifier(excluded_modifiers : Array) -> Dictionary:
 			continue
 		cumulative += normal_modifiers[key]["weight"]
 		if random_value < cumulative:
-			return normal_modifiers[key]
+			return key
 	
-	return {} #should never happen, fallback
+	return ""

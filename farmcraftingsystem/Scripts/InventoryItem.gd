@@ -25,9 +25,16 @@ func _gui_input(event: InputEvent) -> void:
 func update_tooltip():
 	if item_data != null:
 		if item_data is CropResource:
-			tooltip_text = "%s x%d\n%s" %  [item_data.name, stack_count, item_data.description]
+			tooltip_text = "%s\n%d\n%s" %  [item_data.name, stack_count, item_data.description]
+		
 		if item_data is SeedsResource:
-			tooltip_text = "%s %s" %  [item_data.name, item_data.description]
+			var modifiers_text = ""
+			for modifier in item_data.modifiers:
+				modifiers_text += str(modifier) + ", "
+
+			if modifiers_text.length() > 0:
+				modifiers_text = modifiers_text.substr(0, modifiers_text.length() - 2)
+			tooltip_text = "%s\n%s\n%s" % [item_data.name, modifiers_text, item_data.description]
 
 func is_stackable_with(other: InventoryItem) -> bool:
 	return item_data is CropResource and other.item_data == item_data

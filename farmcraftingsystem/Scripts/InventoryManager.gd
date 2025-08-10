@@ -25,9 +25,9 @@ func _ready():
 	
 	for i in temp_items_load_fortesting.size():
 		var item_resource = load(temp_items_load_fortesting[i])
-		var item := InventoryItem.new()
-		item.initialize(item_resource, self)
-		inventory.get_child(i).add_child(item)
+		var inventory_item := InventoryItem.new()
+		inventory_item.initialize(item_resource, self)
+		inventory.get_child(i).add_child(inventory_item)
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("open_inventory") and inventory_background.visible == false:
@@ -39,8 +39,8 @@ func _input(_event: InputEvent) -> void:
 	elif Input.is_action_just_pressed("close_crafting_menu") and crafting_background.visible == true:
 		crafting_background.visible = false
 	
-func shift_click_item(item: InventoryItem) -> void:
-	var current_slot = item.get_parent()
+func shift_click_item(inventory_item: InventoryItem) -> void:
+	var current_slot = inventory_item.get_parent()
 	var target_slot = null
 
 	if current_slot.is_in_group("CraftingSlot") and inventory_background.visible:
@@ -54,8 +54,8 @@ func shift_click_item(item: InventoryItem) -> void:
 		target_slot = find_empty_inventory_slot()
 	
 	if target_slot:
-		current_slot.remove_child(item)
-		target_slot.add_child(item)
+		current_slot.remove_child(inventory_item)
+		target_slot.add_child(inventory_item)
 
 func find_empty_inventory_slot() -> InventorySlot:
 	for slot in inventory.get_children():
@@ -77,8 +77,8 @@ func find_empty_hotbar_slot() -> InventorySlot:
 			return slot
 	return null
 
-func _on_item_unequipped(item: InventoryItem) -> void:
-	crafting_item_unequipped.emit(item)
+func _on_item_unequipped(inventory_item: InventoryItem) -> void:
+	crafting_item_unequipped.emit(inventory_item)
 
 func _on_picked_up_item(picked_up_item: ItemResource) -> void:
 	# Check if there is an empty slot in the inventory
