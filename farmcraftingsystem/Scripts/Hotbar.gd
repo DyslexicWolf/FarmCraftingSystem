@@ -12,7 +12,7 @@ var camera : Camera2D
 func _ready():
 	update_highlight()
 	tile_map_layer = get_node("/root/Game/Farmland")
-	camera = get_node("/root/Game/Camera2D")
+	camera = get_node("/root/Game/Player/Camera2D")
 
 func _input(event):
 	if event is InputEventMouseButton and event.is_pressed():
