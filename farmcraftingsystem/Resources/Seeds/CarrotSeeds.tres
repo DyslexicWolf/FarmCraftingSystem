@@ -1,23 +1,22 @@
-[gd_resource type="Resource" script_class="SeedsResource" load_steps=4 format=3 uid="uid://dgrankgi5wp2y"]
+[gd_resource type="Resource" script_class="SeedsResource" load_steps=3 format=3 uid="uid://dgrankgi5wp2y"]
 
-[ext_resource type="Resource" uid="uid://cgnwolxs6ry72" path="res://Resources/Crops/CarrotCrop.tres" id="1_8xbes"]
 [ext_resource type="Script" uid="uid://co4ncy88yfbxr" path="res://Resources/ScriptBases/SeedsResource.gd" id="1_p0e5c"]
 [ext_resource type="Texture2D" uid="uid://d2a2xawrihnql" path="res://Assets/Seeds/Carrot_Seeds.png" id="2_8xbes"]
 
 [resource]
 script = ExtResource("1_p0e5c")
-base_name = "Carrot"
 yield_multiplier = 1
-crit_harvest_chance = 4
-grow_time = 10.0
+harvest_crit_chance = 5
 seeds_amount = 1
+base_harvest = 5
+grow_time = 10.0
 planted_tile_id = 1
 growing1_tile_id = 2
 growing2_tile_id = 3
 mature_tile_id = 4
 use_amount = 3
-crop_resource = ExtResource("1_8xbes")
 name = "Carrot Seeds"
+base_name = "Carrot"
 rarity = 0
 ui_texture = ExtResource("2_8xbes")
 description = "Normal carrot seeds"

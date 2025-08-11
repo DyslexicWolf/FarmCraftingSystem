@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bggnyylgl4gp1"]
 
 [ext_resource type="Script" uid="uid://dut6fjbsq83p4" path="res://Scripts/ItemPickup.gd" id="1_rcxka"]
-[ext_resource type="Resource" uid="uid://cgnwolxs6ry72" path="res://Resources/Crops/CarrotCrop.tres" id="2_25vor"]
+[ext_resource type="Resource" uid="uid://ba84gw3edc3gm" path="res://Resources/Crops/SweetBeetCrop.tres" id="2_rcxka"]
 [ext_resource type="Texture2D" uid="uid://q5cmra8lnsj2" path="res://Assets/Crops/SweetBeet_Crop.png" id="3_rcxka"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_815c6"]
@@ -12,7 +12,7 @@ radius = 18.0278
 
 [node name="SweetBeetPickup" type="Node2D"]
 script = ExtResource("1_rcxka")
-item = ExtResource("2_25vor")
+item = ExtResource("2_rcxka")
 
 [node name="PickupArea" type="Area2D" parent="."]
 collision_layer = 2

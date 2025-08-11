@@ -7,6 +7,7 @@
 script = ExtResource("1_eawj5")
 max_stack_count = 250
 name = "Sweet Beet"
+base_name = "SweetBeet"
 rarity = 0
 ui_texture = ExtResource("2_ty6jr")
 description = "Normal sweet beets"

@@ -9,6 +9,7 @@ var tile_map_layer : TileMapLayer
 var active_slot : int = 0
 var alpha : float
 var camera : Camera2D
+var left_mousebutton_held : bool
 
 func _ready():
 	update_highlight()
@@ -16,18 +17,27 @@ func _ready():
 	camera = get_node("/root/Game/Player/Camera2D")
 
 func _input(event):
-	if event is InputEventMouseButton and event.is_pressed():
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.is_pressed():
+				left_mousebutton_held = true
+			else:
+				left_mousebutton_held = false
+		
 		var slots_size = slots.size()
 		if slots_size == 0:
 			return
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.is_pressed():
 			active_slot = (active_slot + 1) % slots_size
 			update_highlight()
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.is_pressed():
 			active_slot = (active_slot - 1 + slots_size) % slots_size
 			update_highlight()
-		elif event.button_index == MOUSE_BUTTON_LEFT:
-			check_farmland_id()
+		
+
+func _process(delta: float) -> void:
+	if left_mousebutton_held:
+		check_farmland_id()
 
 func update_highlight():
 	for i in range(slots.size()):

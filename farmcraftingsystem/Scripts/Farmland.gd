@@ -33,28 +33,39 @@ func _on_harvest_mature_crops(tile_coords : Vector2i):
 	var cell_data = harvest_ready_cells.get(tile_coords)
 	if cell_data == null:
 		return
-	var pickup_scene = CropPickups.get_pickup_scene(cell_data.item_data.base_name)
+	var item_data = cell_data.item_data
+	var pickup_scene = CropPickups.get_pickup_scene(item_data.base_name)
 	if pickup_scene == null:
-		push_error("No pickup scene for base_name: %s" % cell_data.item_data.base_name)
+		push_error("No pickup scene for base_name: %s" % item_data.base_name)
 		return
 	
-	#calculate how many instances to spawn based on itemdata (yieldmultiplier etc)
-	var instance = pickup_scene.instantiate()
-	var world_pos = self.map_to_local(tile_coords)
-	instance.position = world_pos
-	add_child(instance)
+	var instance_count : int
+	if calculate_harvest_crit(item_data.harvest_crit_chance):
+		instance_count = ((item_data.base_harvest + item_data.seeds_amount)*item_data.yield_multiplier) * 2
+	else:
+		instance_count = (item_data.base_harvest + item_data.seeds_amount)*item_data.yield_multiplier
 	
-	#these values are for a max offset of 1 tile
-	var offset_x = randf_range(-32, 32) 
-	var offset_y = randf_range(-32, 32)
+	for i in range(instance_count):
+		var instance_scene = pickup_scene.instantiate()
+		var world_pos = self.map_to_local(tile_coords)
+		instance_scene.position = world_pos
+		add_child(instance_scene)
 	
-	var target_pos = world_pos + Vector2(offset_x, offset_y)
-	# Animate movement to target
-	var tween = create_tween()
-	tween.tween_property(instance, "position", target_pos, 0.3) # 0.5 seconds
+		#these values are for a max offset of 1 tile
+		var offset_x = randi_range(-32, 32) 
+		var offset_y = randi_range(-32, 32)
+		var target_pos = world_pos + Vector2(offset_x, offset_y)
+		
+		var tween = create_tween()
+		tween.tween_property(instance_scene, "position", target_pos, 0.3)
+	
 	set_cell(tile_coords, 0, Vector2i(0, 0))
 	harvest_ready_cells.erase(tile_coords)
-	print(harvest_ready_cells)
+
+func calculate_harvest_crit(crit_chance : int) -> bool:
+	if randi_range(0, 100) <= crit_chance:
+		return true
+	return false
 
 func _on_growth_stage(tile_coords : Vector2i, item_data : SeedsResource):
 	var cell_data = planted_cells.get(tile_coords)

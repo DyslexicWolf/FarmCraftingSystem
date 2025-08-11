@@ -64,12 +64,14 @@ func apply_modifiers_to_item() -> void:
 		
 		if category == "uses":
 			inventory_item.item_data.use_amount += value
-		elif category == "yield":
+		elif category == "yield_mult":
 			inventory_item.item_data.yield_multiplier += value
 		elif category == "seeds":
 			inventory_item.item_data.seeds_amount += value
 		elif category == "crit_chance":
 			inventory_item.item_data.harvest_crit_chance += value
+		elif category == "base_harvest":
+			inventory_item.item_data.base_harvest += value
 		else:
 			continue
 		inventory_item.item_data.modifiers.append(modifier)

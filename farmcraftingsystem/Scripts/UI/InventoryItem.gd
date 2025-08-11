@@ -37,8 +37,6 @@ func update_tooltip():
 			tooltip_text = "%s\n%s\n%s" % [item_data.name, modifiers_text, item_data.description]
 
 func is_stackable_with(item: Variant) -> bool:
-	#weird problem with this, sweetbeets and carrot stack on eachother, sweetbeets turn in carrot when pickedup
-	print(item_data is CropResource and item is CropResource and item.base_name == item_data.base_name)
 	return item_data is CropResource and item is CropResource and item.base_name == item_data.base_name
 
 func add_to_stack(amount: int) -> bool:

@@ -1,9 +1,9 @@
 extends Node
 
 var normal_modifiers : Dictionary = {
-	yield_up_3 = {category = "yield", rank = 3, value = 3, weight = 10},
-	yield_up_2 = {category = "yield", rank = 2, value = 7, weight = 5},
-	yield_up_1 = {category = "yield", rank = 1, value = 11, weight = 2},
+	yield_up_3 = {category = "yield_mult", rank = 3, value = 3, weight = 10},
+	yield_up_2 = {category = "yield_mult", rank = 2, value = 7, weight = 5},
+	yield_up_1 = {category = "yield_mult", rank = 1, value = 11, weight = 2},
 
 	seeds_up_3 = {category = "seeds", rank = 3, value = 2, weight = 12},
 	seeds_up_2 = {category = "seeds", rank = 2, value = 4, weight = 6},
@@ -16,6 +16,10 @@ var normal_modifiers : Dictionary = {
 	use_amount_3 = {category = "uses", rank = 3, value = 2, weight = 15},
 	use_amount_2 = {category = "uses", rank = 2, value = 4, weight = 10},
 	use_amount_1 = {category = "uses", rank = 1, value = 8, weight = 5},
+	
+	base_harvest_up_3 = {category = "base_harvest", rank = 3, value = 2, weight = 15},
+	base_harvest_up_2 = {category = "base_harvest", rank = 2, value = 4, weight = 10},
+	base_harvest_up_1 = {category = "base_harvest", rank = 1, value = 8, weight = 5},
 }
 
 func get_random_modifier(excluded_modifiers : Array[String]) -> String:
