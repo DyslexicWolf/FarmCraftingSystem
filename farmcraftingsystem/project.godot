@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 Modifiers="*res://Scripts/Globals/Modifiers.gd"
 CropPickups="*res://Scripts/Globals/CropPickups.gd"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/project_time/plugin.cfg")

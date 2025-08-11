@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_jr2m1")
-yield_multiplier = 1
+yield_multiplier = 0.2
 harvest_crit_chance = 12
 seeds_amount = 1
 base_harvest = 8

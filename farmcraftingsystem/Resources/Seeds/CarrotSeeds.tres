@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("1_p0e5c")
-yield_multiplier = 1
-harvest_crit_chance = 5
+yield_multiplier = 1.0
+harvest_crit_chance = 1
 seeds_amount = 1
 base_harvest = 5
-grow_time = 10.0
+grow_time = 3.0
 planted_tile_id = 1
 growing1_tile_id = 2
 growing2_tile_id = 3

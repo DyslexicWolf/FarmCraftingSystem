@@ -1,7 +1,7 @@
 extends ItemResource
 class_name SeedsResource
 
-@export var yield_multiplier : int
+@export var yield_multiplier : float
 @export var harvest_crit_chance : int
 @export var seeds_amount : int
 @export var base_harvest : int

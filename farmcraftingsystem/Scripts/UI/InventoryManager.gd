@@ -81,14 +81,14 @@ func find_empty_hotbar_slot() -> InventorySlot:
 func _on_item_unequipped(inventory_item: InventoryItem) -> void:
 	crafting_item_unequipped.emit(inventory_item)
 
-func _on_picked_up_item(picked_up_item: ItemResource) -> void:
+func _on_picked_up_item(picked_up_item: ItemResource, stack_count : int) -> void:
 	# Check if there is an empty slot in the inventory
 	for i in range(inventory.get_child_count()):
 		var slot = inventory.get_child(i)
 		if slot.get_child_count() == 1:
 			var item = slot.get_child(0)
 			if item.is_stackable_with(picked_up_item):
-				if item.add_to_stack(1):
+				if item.add_to_stack(stack_count):
 					return
 	
 	for i in range(inventory.get_child_count()):

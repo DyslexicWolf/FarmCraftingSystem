@@ -40,6 +40,7 @@ func is_stackable_with(item: Variant) -> bool:
 	return item_data is CropResource and item is CropResource and item.base_name == item_data.base_name
 
 func add_to_stack(amount: int) -> bool:
+	#account for to many items to be stacked on, so it takes the amount it can take and then returns what it cant
 	if not (item_data is CropResource):
 		return false
 	if amount <= 0:

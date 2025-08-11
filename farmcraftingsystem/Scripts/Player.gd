@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-signal picked_up_item(item: ItemResource)
+signal picked_up_item(item: ItemResource, stack_count: int)
 
 var speed = 130.0
 var direction
@@ -32,5 +32,5 @@ func change_animation():
 	else:
 		player_animated_sprite.play("idle")
 
-func on_picked_up_item(item: ItemResource):
-	picked_up_item.emit(item)
+func on_picked_up_item(item: ItemResource, stack_count: int):
+	picked_up_item.emit(item, stack_count)

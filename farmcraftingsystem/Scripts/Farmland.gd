@@ -4,6 +4,8 @@ class_name Farmland
 var planted_cells : Dictionary = {}
 var harvest_ready_cells : Dictionary = {}
 var game : Node2D
+@export var max_instances : int = 10
+var excess_instances : int
 
 func _ready() -> void:
 	var hotbar = get_node("/root/Game/HUD/Hotbar")
@@ -41,31 +43,39 @@ func _on_harvest_mature_crops(tile_coords : Vector2i):
 	
 	var instance_count : int
 	if calculate_harvest_crit(item_data.harvest_crit_chance):
-		instance_count = ((item_data.base_harvest + item_data.seeds_amount)*item_data.yield_multiplier) * 2
+		instance_count = roundi(((item_data.base_harvest + item_data.seeds_amount) * item_data.yield_multiplier) * 2)
 	else:
-		instance_count = (item_data.base_harvest + item_data.seeds_amount)*item_data.yield_multiplier
+		instance_count = roundi((item_data.base_harvest + item_data.seeds_amount) * item_data.yield_multiplier)
 	
+	var capped = min(instance_count, max_instances)
+	var excess = max(instance_count - max_instances, 0)
+	if capped > 0:
+		spawn_pickup_items(tile_coords, pickup_scene, capped, 1)
+	if excess > 0:
+		# one extra pickup with the remaining stack
+		spawn_pickup_items(tile_coords, pickup_scene, 1, excess)
+	set_cell(tile_coords, 0, Vector2i(0, 0))
+	harvest_ready_cells.erase(tile_coords)
+
+func calculate_harvest_crit(crit_chance : int) -> bool:
+	var chance = clamp(crit_chance, 0, 100)
+	return randi_range(1, 100) <= chance
+
+func spawn_pickup_items(tile_coords : Vector2i, pickup_scene : Resource, instance_count: int, stack_count: int):
 	for i in range(instance_count):
 		var instance_scene = pickup_scene.instantiate()
+		instance_scene.stack_count = stack_count
 		var world_pos = self.map_to_local(tile_coords)
 		instance_scene.position = world_pos
 		add_child(instance_scene)
-	
+		
 		#these values are for a max offset of 1 tile
-		var offset_x = randi_range(-32, 32) 
+		var offset_x = randi_range(-32, 32)
 		var offset_y = randi_range(-32, 32)
 		var target_pos = world_pos + Vector2(offset_x, offset_y)
 		
 		var tween = create_tween()
 		tween.tween_property(instance_scene, "position", target_pos, 0.3)
-	
-	set_cell(tile_coords, 0, Vector2i(0, 0))
-	harvest_ready_cells.erase(tile_coords)
-
-func calculate_harvest_crit(crit_chance : int) -> bool:
-	if randi_range(0, 100) <= crit_chance:
-		return true
-	return false
 
 func _on_growth_stage(tile_coords : Vector2i, item_data : SeedsResource):
 	var cell_data = planted_cells.get(tile_coords)

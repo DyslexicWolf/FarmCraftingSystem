@@ -4,6 +4,7 @@ class_name ItemPickup
 var speed = 200
 var target : Node2D = null
 @export var item : CropResource
+var stack_count : int = 1
 
 func _physics_process(delta: float) -> void:
 	if target:
@@ -16,5 +17,5 @@ func _on_pickup_area_body_entered(body: Node2D) -> void:
 
 func _on_delete_area_body_entered(body: Node2D) -> void:
 	if body is Player:
-		body.on_picked_up_item(item)
+		body.on_picked_up_item(item, stack_count)
 		queue_free()
