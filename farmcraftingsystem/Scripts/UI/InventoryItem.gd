@@ -61,20 +61,24 @@ func update_tooltip():
 func is_stackable_with(item: Variant) -> bool:
 	return item_data is CropResource and item is CropResource and item.base_name == item_data.base_name
 
-func add_to_stack(amount: int) -> bool:
+func add_to_stack(amount: int) -> Array:
 	#account for to many items to be stacked on, so it takes the amount it can take and then returns what it cant
 	if not (item_data is CropResource):
-		return false
+		return [false, amount]
 	if amount <= 0:
-		return false
+		return [false, amount]
+	
 	var max_stack_count = item_data.max_stack_count
 	if stack_count >= max_stack_count:
-		return false
-	var target := stack_count + amount
-	var fully_added = target <= max_stack_count
-	stack_count = min(target, max_stack_count)
+		return [false, amount]
+	
+	var space_left = max_stack_count - stack_count
+	var amount_to_add = min(amount, space_left)
+	stack_count += amount_to_add
 	update_tooltip()
-	return fully_added
+	
+	var leftover = amount - amount_to_add
+	return [true, leftover]
 
 func _get_drag_data(at_position: Vector2):
 	set_drag_preview(make_drag_preview(at_position))

@@ -37,6 +37,12 @@ func _drop_data(_at_position: Vector2, data: Variant):
 		add_child(data)
 		update_stack_count_label(data.stack_count)
 
+func update_stack_count_label(count : int):
+	if count > 1:
+		stack_count_label.text = str(count)
+		stack_count_label.visible = true
+	else:
+		stack_count_label.visible = false
 
 func has_item() -> bool:
 	if get_child_count() == 1:

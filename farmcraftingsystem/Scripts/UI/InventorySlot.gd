@@ -2,19 +2,19 @@ extends PanelContainer
 class_name InventorySlot
 
 signal item_unequipped(item : ItemResource)
-var stack_count_label = Label
+@export var stack_count_label = Label
 
 func initialize(cms: Vector2) -> void:
 	custom_minimum_size = cms
 	stack_count_label = Label.new()
-	stack_count_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	stack_count_label.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
+	stack_count_label.size_flags_horizontal = Control.SIZE_SHRINK_END
+	stack_count_label.size_flags_vertical = Control.SIZE_SHRINK_END
 	self.add_child(stack_count_label)
 
 # Checks if the dragged item can be dropped into this slot
 func _can_drop_data(_at_position: Vector2, data: Variant):
 	if data is InventoryItem:
-			return true
+		return true
 	return false
 
 func _drop_data(_at_position: Vector2, data: Variant):

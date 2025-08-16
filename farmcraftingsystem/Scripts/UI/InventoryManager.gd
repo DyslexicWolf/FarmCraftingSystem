@@ -82,19 +82,47 @@ func _on_item_unequipped(inventory_item: InventoryItem) -> void:
 	crafting_item_unequipped.emit(inventory_item)
 
 func _on_picked_up_item(picked_up_item: ItemResource, stack_count : int) -> void:
-	#read over and double check this function to see if the second for loop is necesarry or not
-	for i in range(inventory.get_child_count()):
-		var slot = inventory.get_child(i)
-		if slot.get_child_count() == 2 and slot.get_child(1) is InventoryItem:
-			var item = slot.get_child(1)
-			if item.is_stackable_with(picked_up_item):
-				if item.add_to_stack(stack_count):
-					return
-	
-	for i in range(inventory.get_child_count()):
-		var slot = inventory.get_child(i)
-		if slot.get_child_count() == 1:
-			var item := InventoryItem.new()
-			item.initialize(picked_up_item, self)
-			slot.add_child(item)
+	var leftover = stack_count
+	while leftover > 0:
+		var placed_in_stack := false
+		
+		# First pass: try to stack onto existing items
+		for i in range(inventory.get_child_count()):
+			var slot = inventory.get_child(i)
+			if slot.get_child_count() == 2 and slot.get_child(1) is InventoryItem:
+				var item = slot.get_child(1)
+				if item.is_stackable_with(picked_up_item):
+					var result = item.add_to_stack(leftover)
+					var added_successfully = result[0]
+					leftover = result[1]
+					if added_successfully:
+						slot.update_stack_count_label(item.stack_count)
+					if leftover <= 0:
+						return
+					placed_in_stack = true
+		
+		# If nothing could be stacked, try to place in a free slot
+		var found_empty := false
+		
+		if not placed_in_stack:
+			for i in range(inventory.get_child_count()):
+				var slot = inventory.get_child(i)
+				if slot.get_child_count() == 1:
+					var item := InventoryItem.new()
+					item.initialize(picked_up_item, self)
+					if leftover > 1:
+						var result = item.add_to_stack(leftover)
+						leftover = result[1]
+					else:
+						leftover = 0
+					slot.add_child(item)
+					slot.update_stack_count_label(item.stack_count)
+					found_empty = true
+					break
+		if found_empty and leftover <= 0:
 			return
+			
+			# If no empty slots exist → stop (inventory full)
+			if not found_empty:
+				print("Inventory full! Leftover: ", leftover)
+				return

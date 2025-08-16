@@ -51,90 +51,99 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("2_2hjaa")
 
-[node name="PanelContainer1" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
+[node name="PanelContainer1" type="PanelContainer" parent="Hotbar" node_paths=PackedStringArray("stack_count_label") groups=["HotbarSlot"]]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
+stack_count_label = NodePath("StackCount")
 
 [node name="StackCount" type="Label" parent="Hotbar/PanelContainer1"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="PanelContainer2" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
+[node name="PanelContainer2" type="PanelContainer" parent="Hotbar" node_paths=PackedStringArray("stack_count_label") groups=["HotbarSlot"]]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
+stack_count_label = NodePath("StackCount")
 
 [node name="StackCount" type="Label" parent="Hotbar/PanelContainer2"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="PanelContainer3" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
+[node name="PanelContainer3" type="PanelContainer" parent="Hotbar" node_paths=PackedStringArray("stack_count_label") groups=["HotbarSlot"]]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
+stack_count_label = NodePath("StackCount")
 
 [node name="StackCount" type="Label" parent="Hotbar/PanelContainer3"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="PanelContainer4" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
+[node name="PanelContainer4" type="PanelContainer" parent="Hotbar" node_paths=PackedStringArray("stack_count_label") groups=["HotbarSlot"]]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
+stack_count_label = NodePath("StackCount")
 
 [node name="StackCount" type="Label" parent="Hotbar/PanelContainer4"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="PanelContainer5" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
+[node name="PanelContainer5" type="PanelContainer" parent="Hotbar" node_paths=PackedStringArray("stack_count_label") groups=["HotbarSlot"]]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
+stack_count_label = NodePath("StackCount")
 
 [node name="StackCount" type="Label" parent="Hotbar/PanelContainer5"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="PanelContainer6" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
+[node name="PanelContainer6" type="PanelContainer" parent="Hotbar" node_paths=PackedStringArray("stack_count_label") groups=["HotbarSlot"]]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
+stack_count_label = NodePath("StackCount")
 
 [node name="StackCount" type="Label" parent="Hotbar/PanelContainer6"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="PanelContainer7" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
+[node name="PanelContainer7" type="PanelContainer" parent="Hotbar" node_paths=PackedStringArray("stack_count_label") groups=["HotbarSlot"]]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
+stack_count_label = NodePath("StackCount")
 
 [node name="StackCount" type="Label" parent="Hotbar/PanelContainer7"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="PanelContainer8" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
+[node name="PanelContainer8" type="PanelContainer" parent="Hotbar" node_paths=PackedStringArray("stack_count_label") groups=["HotbarSlot"]]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
+stack_count_label = NodePath("StackCount")
 
 [node name="StackCount" type="Label" parent="Hotbar/PanelContainer8"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="PanelContainer9" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
+[node name="PanelContainer9" type="PanelContainer" parent="Hotbar" node_paths=PackedStringArray("stack_count_label") groups=["HotbarSlot"]]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
+stack_count_label = NodePath("StackCount")
 
 [node name="StackCount" type="Label" parent="Hotbar/PanelContainer9"]
 layout_mode = 2
@@ -148,7 +157,7 @@ offset_right = 268.0
 offset_bottom = 468.0
 script = ExtResource("2_4v8qb")
 
-[node name="CraftingSlot" type="PanelContainer" parent="CraftingBackground" groups=["CraftingSlot"]]
+[node name="CraftingSlot" type="PanelContainer" parent="CraftingBackground" node_paths=PackedStringArray("stack_count_label") groups=["CraftingSlot"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -162,6 +171,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_4v8qb")
+stack_count_label = NodePath("StackCount")
 
 [node name="StackCount" type="Label" parent="CraftingBackground/CraftingSlot"]
 layout_mode = 2
