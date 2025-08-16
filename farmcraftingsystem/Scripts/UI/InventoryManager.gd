@@ -60,21 +60,21 @@ func shift_click_item(inventory_item: InventoryItem) -> void:
 
 func find_empty_inventory_slot() -> InventorySlot:
 	for slot in inventory.get_children():
-		if slot.get_child_count() == 0:
+		if slot.get_child_count() == 1:
 			return slot
 	return null
 
 func find_empty_crafting_slot() -> InventorySlot:
 	var crafting_slot = crafting_background.get_child(0)
 	if crafting_slot:
-		if crafting_slot.get_child_count() == 0:
+		if crafting_slot.get_child_count() == 1:
 			return crafting_slot
 	return null
 
 func find_empty_hotbar_slot() -> InventorySlot:
 	var hotbar_slots = $Hotbar.get_children()
 	for slot in hotbar_slots:
-		if slot.get_child_count() == 0:
+		if slot.get_child_count() == 1:
 			return slot
 	return null
 
@@ -82,18 +82,18 @@ func _on_item_unequipped(inventory_item: InventoryItem) -> void:
 	crafting_item_unequipped.emit(inventory_item)
 
 func _on_picked_up_item(picked_up_item: ItemResource, stack_count : int) -> void:
-	# Check if there is an empty slot in the inventory
+	#read over and double check this function to see if the second for loop is necesarry or not
 	for i in range(inventory.get_child_count()):
 		var slot = inventory.get_child(i)
-		if slot.get_child_count() == 1:
-			var item = slot.get_child(0)
+		if slot.get_child_count() == 2 and slot.get_child(1) is InventoryItem:
+			var item = slot.get_child(1)
 			if item.is_stackable_with(picked_up_item):
 				if item.add_to_stack(stack_count):
 					return
 	
 	for i in range(inventory.get_child_count()):
 		var slot = inventory.get_child(i)
-		if slot.get_child_count() == 0:
+		if slot.get_child_count() == 1:
 			var item := InventoryItem.new()
 			item.initialize(picked_up_item, self)
 			slot.add_child(item)

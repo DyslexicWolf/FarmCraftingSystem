@@ -56,35 +56,90 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
 
+[node name="StackCount" type="Label" parent="Hotbar/PanelContainer1"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
 [node name="PanelContainer2" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
+
+[node name="StackCount" type="Label" parent="Hotbar/PanelContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 
 [node name="PanelContainer3" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
 
+[node name="StackCount" type="Label" parent="Hotbar/PanelContainer3"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
 [node name="PanelContainer4" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
+
+[node name="StackCount" type="Label" parent="Hotbar/PanelContainer4"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 
 [node name="PanelContainer5" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
 
+[node name="StackCount" type="Label" parent="Hotbar/PanelContainer5"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
 [node name="PanelContainer6" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
 
+[node name="StackCount" type="Label" parent="Hotbar/PanelContainer6"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
 [node name="PanelContainer7" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
+
+[node name="StackCount" type="Label" parent="Hotbar/PanelContainer7"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="PanelContainer8" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+script = ExtResource("2_1pi3o")
+
+[node name="StackCount" type="Label" parent="Hotbar/PanelContainer8"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="PanelContainer9" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+script = ExtResource("2_1pi3o")
+
+[node name="StackCount" type="Label" parent="Hotbar/PanelContainer9"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 
 [node name="CraftingBackground" type="Panel" parent="."]
 offset_left = 45.0
@@ -107,6 +162,11 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_4v8qb")
+
+[node name="StackCount" type="Label" parent="CraftingBackground/CraftingSlot"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 
 [node name="AllNewModifiersButton" type="Button" parent="CraftingBackground"]
 layout_mode = 0
@@ -132,6 +192,8 @@ text = "Add 1 mod"
 [connection signal="item_unequipped" from="Hotbar/PanelContainer5" to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
 [connection signal="item_unequipped" from="Hotbar/PanelContainer6" to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
 [connection signal="item_unequipped" from="Hotbar/PanelContainer7" to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
+[connection signal="item_unequipped" from="Hotbar/PanelContainer8" to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
+[connection signal="item_unequipped" from="Hotbar/PanelContainer9" to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
 [connection signal="item_equipped" from="CraftingBackground/CraftingSlot" to="CraftingBackground" method="_on_crafting_slot_item_equipped"]
 [connection signal="item_unequipped" from="CraftingBackground/CraftingSlot" to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
 [connection signal="pressed" from="CraftingBackground/AllNewModifiersButton" to="CraftingBackground" method="_on_all_new_modifiers_button_pressed"]

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ctwwqvp27u0db"]
+
+[node name="CustomTooltip" type="Control"]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 150.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+custom_minimum_size = Vector2(180, 130)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 190.0
+offset_bottom = 140.0
+bbcode_enabled = true

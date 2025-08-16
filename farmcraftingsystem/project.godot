@@ -35,6 +35,11 @@ InventorySlot="Inventoryslots group"
 HotbarSlot="Hotbarslots group"
 CraftingSlot="Craftingslots group"
 
+[gui]
+
+timers/tooltip_delay_sec=0.25
+timers/tooltip_delay_sec.editor_hint=0.25
+
 [input]
 
 open_inventory={

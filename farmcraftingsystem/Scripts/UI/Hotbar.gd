@@ -4,7 +4,7 @@ class_name Hotbar
 signal planted_seeds(cell_coords : Vector2i, item : SeedsResource)
 signal harvest_mature_crops(cell_coords : Vector2i, item : SeedsResource)
 
-@onready var slots = self.get_children()
+@onready var slots : Array = self.get_children()
 var tile_map_layer : TileMapLayer
 var active_slot : int = 0
 var alpha : float
@@ -15,6 +15,8 @@ func _ready():
 	update_highlight()
 	tile_map_layer = get_node("/root/Game/Farmland")
 	camera = get_node("/root/Game/Player/Camera2D")
+
+#implement numbers for hotbar slots
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -64,12 +66,12 @@ func use_item_on_normal_farmland(tile_coords : Vector2i):
 	var slot = slots[active_slot]
 	if not slot.has_item():
 		return
-	var inventory_item = slot.get_child(0)
+	var inventory_item = slot.get_child(1)
 	
 	if inventory_item.item_data is not SeedsResource:
 		return
 	
 	inventory_item.item_data.use_amount -= 1
 	if inventory_item.item_data.use_amount == 0:
-		slot.get_child(0).queue_free()
+		slot.get_child(1).queue_free()
 	planted_seeds.emit(tile_coords, inventory_item.item_data)
