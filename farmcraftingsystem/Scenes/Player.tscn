@@ -184,7 +184,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 10
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("1_rpqav")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

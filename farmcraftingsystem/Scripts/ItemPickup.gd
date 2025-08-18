@@ -17,5 +17,5 @@ func _on_pickup_area_body_entered(body: Node2D) -> void:
 
 func _on_delete_area_body_entered(body: Node2D) -> void:
 	if body is Player:
-		body.on_picked_up_item(item, stack_count)
+		body.on_picked_up_crop(item, stack_count)
 		queue_free()

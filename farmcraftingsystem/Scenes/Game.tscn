@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://ccqmlkskll2ik"]
+[gd_scene load_steps=24 format=4 uid="uid://ccqmlkskll2ik"]
 
 [ext_resource type="PackedScene" uid="uid://cf5ww85fun1s0" path="res://Scenes/Player.tscn" id="1_3so38"]
 [ext_resource type="PackedScene" uid="uid://br48fyjfckcy6" path="res://Scenes/Inventory.tscn" id="1_iukft"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://babl58ve0pggp" path="res://Assets/Tiles/SweetBeet_Growing_2.png" id="9_3so38"]
 [ext_resource type="Texture2D" uid="uid://caq4gnwjlvgj5" path="res://Assets/Tiles/SweetBeet_Mature.png" id="10_dahhg"]
 [ext_resource type="Script" uid="uid://wt3fnnqxtha8" path="res://Scripts/Farmland.gd" id="11_dahhg"]
+[ext_resource type="PackedScene" uid="uid://dk0suexxsaigo" path="res://Scenes/Shop.tscn" id="13_3cx6b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j5yw3"]
 resource_name = "Farmland"
@@ -85,4 +86,7 @@ tile_map_data = PackedByteArray("AAAHAPr/AAAAAAAAAAAHAPv/AAAAAAAAAAAIAPr/AAAAAAA
 tile_set = SubResource("TileSet_kldst")
 script = ExtResource("11_dahhg")
 
-[connection signal="picked_up_item" from="Player" to="HUD" method="_on_picked_up_item"]
+[node name="Shop" parent="." instance=ExtResource("13_3cx6b")]
+position = Vector2(-1, -180)
+
+[connection signal="picked_up_crop" from="Player" to="HUD" method="_on_player_picked_up_crop"]

@@ -2,6 +2,7 @@ extends CanvasLayer
 class_name InventoryManager
 
 signal crafting_item_unequipped(item : ItemResource)
+signal picked_up_crop(item : ItemResource, stack_count : int)
 
 var inventory_size = 21
 var inventory : GridContainer
@@ -81,48 +82,53 @@ func find_empty_hotbar_slot() -> InventorySlot:
 func _on_item_unequipped(inventory_item: InventoryItem) -> void:
 	crafting_item_unequipped.emit(inventory_item)
 
-func _on_picked_up_item(picked_up_item: ItemResource, stack_count : int) -> void:
-	var leftover = stack_count
-	while leftover > 0:
-		var placed_in_stack := false
-		
-		# First pass: try to stack onto existing items
-		for i in range(inventory.get_child_count()):
-			var slot = inventory.get_child(i)
-			if slot.get_child_count() == 2 and slot.get_child(1) is InventoryItem:
-				var item = slot.get_child(1)
-				if item.is_stackable_with(picked_up_item):
-					var result = item.add_to_stack(leftover)
-					var added_successfully = result[0]
-					leftover = result[1]
-					if added_successfully:
-						slot.update_stack_count_label(item.stack_count)
-					if leftover <= 0:
-						return
-					placed_in_stack = true
-		
-		# If nothing could be stacked, try to place in a free slot
-		var found_empty := false
-		
-		if not placed_in_stack:
-			for i in range(inventory.get_child_count()):
-				var slot = inventory.get_child(i)
-				if slot.get_child_count() == 1:
-					var item := InventoryItem.new()
-					item.initialize(picked_up_item, self)
-					if leftover > 1:
-						var result = item.add_to_stack(leftover)
-						leftover = result[1]
-					else:
-						leftover = 0
-					slot.add_child(item)
-					slot.update_stack_count_label(item.stack_count)
-					found_empty = true
-					break
-		if found_empty and leftover <= 0:
-			return
-			
-			# If no empty slots exist → stop (inventory full)
-			if not found_empty:
-				print("Inventory full! Leftover: ", leftover)
-				return
+func _on_player_picked_up_crop(item: ItemResource, stack_count: int) -> void:
+	picked_up_crop.emit(item, stack_count)
+
+
+#temporarly unused, might use later
+#func _on_picked_up_item(picked_up_item: ItemResource, stack_count : int) -> void:
+	#var leftover = stack_count
+	#while leftover > 0:
+		#var placed_in_stack := false
+		#
+		## First pass: try to stack onto existing items
+		#for i in range(inventory.get_child_count()):
+			#var slot = inventory.get_child(i)
+			#if slot.get_child_count() == 2 and slot.get_child(1) is InventoryItem:
+				#var item = slot.get_child(1)
+				#if item.is_stackable_with(picked_up_item):
+					#var result = item.add_to_stack(leftover)
+					#var added_successfully = result[0]
+					#leftover = result[1]
+					#if added_successfully:
+						#slot.update_stack_count_label(item.stack_count)
+					#if leftover <= 0:
+						#return
+					#placed_in_stack = true
+		#
+		## If nothing could be stacked, try to place in a free slot
+		#var found_empty := false
+		#
+		#if not placed_in_stack:
+			#for i in range(inventory.get_child_count()):
+				#var slot = inventory.get_child(i)
+				#if slot.get_child_count() == 1:
+					#var item := InventoryItem.new()
+					#item.initialize(picked_up_item, self)
+					#if leftover > 1:
+						#var result = item.add_to_stack(leftover)
+						#leftover = result[1]
+					#else:
+						#leftover = 0
+					#slot.add_child(item)
+					#slot.update_stack_count_label(item.stack_count)
+					#found_empty = true
+					#break
+		#if found_empty and leftover <= 0:
+			#return
+			#
+			## If no empty slots exist → stop (inventory full)
+			#if not found_empty:
+				#print("Inventory full! Leftover: ", leftover)
+				#return
