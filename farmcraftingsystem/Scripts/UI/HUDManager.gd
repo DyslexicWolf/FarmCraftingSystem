@@ -1,5 +1,5 @@
 extends CanvasLayer
-class_name InventoryManager
+class_name HUDManager
 
 signal crafting_item_unequipped(item : ItemResource)
 signal picked_up_crop(item : ItemResource, stack_count : int)
@@ -40,7 +40,7 @@ func _input(_event: InputEvent) -> void:
 		crafting_background.visible = true
 	elif Input.is_action_just_pressed("close_crafting_menu") and crafting_background.visible == true:
 		crafting_background.visible = false
-	
+
 func shift_click_item(inventory_item: InventoryItem) -> void:
 	var current_slot = inventory_item.get_parent()
 	var target_slot = null

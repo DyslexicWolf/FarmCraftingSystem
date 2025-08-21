@@ -37,7 +37,7 @@ func _input(event):
 			update_highlight()
 		
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if left_mousebutton_held:
 		check_farmland_id()
 

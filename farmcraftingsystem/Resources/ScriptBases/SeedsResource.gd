@@ -11,5 +11,8 @@ class_name SeedsResource
 @export var growing2_tile_id : int
 @export var mature_tile_id : int
 @export var use_amount : int
+@export var shop_cost_amount : int
+@export var shop_cost_texture : Texture2D
+var shop_cost_type = base_name
 var modifiers : Array[String] = []
 var max_amount_modifiers : int = 6

@@ -2,7 +2,7 @@ extends TextureRect
 class_name InventoryItem
 
 @export var item_data : ItemResource
-var inventory_manager : InventoryManager
+var hud_manager : HUDManager
 var stack_count : int = 1
 var custom_tooltip_text : String
 var tooltip_scene = preload("res://Scenes/CustomTooltip.tscn")
@@ -11,18 +11,18 @@ func _ready() -> void:
 	expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 
-func initialize(d: ItemResource, im : InventoryManager, count: int = 1) -> void:
-	item_data = d
+func initialize(data: ItemResource, hudm : HUDManager, count: int = 1) -> void:
+	item_data = data
 	stack_count = count
 	texture = item_data.ui_texture
-	inventory_manager = im
+	hud_manager = hudm
 	update_tooltip()
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if Input.is_action_pressed("shift"):
-			if inventory_manager != null:
-				inventory_manager.shift_click_item(self)
+			if hud_manager != null:
+				hud_manager.shift_click_item(self)
 
 func _make_custom_tooltip(for_text: String) -> Object:
 	var tooltip_instance = tooltip_scene.instantiate()

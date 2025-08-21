@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://babl58ve0pggp" path="res://Assets/Tiles/SweetBeet_Growing_2.png" id="9_3so38"]
 [ext_resource type="Texture2D" uid="uid://caq4gnwjlvgj5" path="res://Assets/Tiles/SweetBeet_Mature.png" id="10_dahhg"]
 [ext_resource type="Script" uid="uid://wt3fnnqxtha8" path="res://Scripts/Farmland.gd" id="11_dahhg"]
-[ext_resource type="PackedScene" uid="uid://dk0suexxsaigo" path="res://Scenes/Shop.tscn" id="13_3cx6b"]
+[ext_resource type="PackedScene" uid="uid://bc305ooswvrix" path="res://Scenes/Shop.tscn" id="13_3cx6b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j5yw3"]
 resource_name = "Farmland"

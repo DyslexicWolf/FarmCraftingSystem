@@ -34,6 +34,7 @@ enabled=PackedStringArray("res://addons/project_time/plugin.cfg")
 InventorySlot="Inventoryslots group"
 HotbarSlot="Hotbarslots group"
 CraftingSlot="Craftingslots group"
+ShopInventorySlot="ShopInventorySlots group"
 
 [gui]
 
