@@ -31,5 +31,5 @@ func _drop_data(_at_position: Vector2, data: Variant):
 
 func has_item() -> bool:
 	if get_child_count() == 1:
-		return false
-	return true
+		return true
+	return false

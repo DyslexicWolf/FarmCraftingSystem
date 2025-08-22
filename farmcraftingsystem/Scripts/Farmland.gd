@@ -16,6 +16,7 @@ func _ready() -> void:
 func _on_planted_seeds(tile_coords, item_data):
 	if planted_cells.has(tile_coords):
 		return
+	print("in planted seeds")
 	set_cell(tile_coords, item_data.planted_tile_id, Vector2i(0, 0))
 	
 	var timer := Timer.new()

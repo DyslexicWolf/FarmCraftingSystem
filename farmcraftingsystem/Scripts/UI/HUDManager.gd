@@ -73,7 +73,6 @@ func find_empty_crafting_slot() -> CraftingSlot:
 	var crafting_slot = crafting_background.get_child(0)
 	if crafting_slot:
 		if crafting_slot.get_child_count() == 0:
-			print("found empty crafting slot")
 			return crafting_slot
 	return null
 

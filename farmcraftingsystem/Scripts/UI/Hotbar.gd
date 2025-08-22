@@ -48,13 +48,11 @@ func update_highlight():
 
 func check_farmland_id():
 	var world_pos: Vector2 = camera.get_global_mouse_position()
-	
 	var local_pos = tile_map_layer.to_local(world_pos)
 	var tile_coords = tile_map_layer.local_to_map(local_pos)
 	var tile_id = tile_map_layer.get_cell_source_id(tile_coords)
 	if tile_id == -1:
 		return
-	
 	match tile_id:
 		0:
 			use_item_on_normal_farmland(tile_coords)
@@ -64,14 +62,14 @@ func check_farmland_id():
 
 func use_item_on_normal_farmland(tile_coords : Vector2i):
 	var slot = slots[active_slot]
-	if not slot.has_item():
+	if slot.has_item() == false:
 		return
-	var inventory_item = slot.get_child(1)
+	
+	var inventory_item = slot.get_child(0)
 	
 	if inventory_item.item_data is not SeedsResource:
 		return
-	
 	inventory_item.item_data.use_amount -= 1
 	if inventory_item.item_data.use_amount == 0:
-		slot.get_child(1).queue_free()
+		slot.get_child(0).queue_free()
 	planted_seeds.emit(tile_coords, inventory_item.item_data)
