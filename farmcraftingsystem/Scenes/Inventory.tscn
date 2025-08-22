@@ -225,4 +225,4 @@ offset_bottom = 31.0
 [connection signal="item_unequipped" from="Hotbar/PanelContainer9" to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
 [connection signal="item_equipped" from="CraftingBackground/CraftingSlot" to="CraftingBackground" method="_on_crafting_slot_item_equipped"]
 [connection signal="item_unequipped" from="CraftingBackground/CraftingSlot" to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
-[connection signal="pressed" from="CraftingBackground/CraftButton" to="CraftingBackground" method="_on_all_new_modifiers_button_pressed"]
+[connection signal="pressed" from="CraftingBackground/CraftButton" to="CraftingBackground" method="_on_craft_button_pressed"]

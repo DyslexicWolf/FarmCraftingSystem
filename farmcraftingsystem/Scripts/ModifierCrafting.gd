@@ -5,8 +5,30 @@ var inventory_item : InventoryItem
 var owned_modifiers : Array[String] = []
 enum Rarity {normal, magic, rare, epic, legendary}
 
+func _on_craft_button_pressed():
+	pass
+	#add logic here to see which specific thing to crafting depending on the active element from the crafting list
 
-func _on_all_new_modifiers_button_pressed() -> void:
+func _on_reforge_harvest_output(category_to_reforge : String) -> void:
+	if inventory_item == null or inventory_item.item_data == null:
+		return
+	
+	var amount_removed = 0
+	for modifier in owned_modifiers.duplicate():
+		var mod_data = Modifiers.normal_modifiers.get(modifier, {})
+		if mod_data.get("category", "") == category_to_reforge:
+			owned_modifiers.erase(modifier)
+			inventory_item.item_data.modifiers.erase(modifier)
+			amount_removed += 1
+	
+	for i in range(amount_removed):
+		var modifier = Modifiers.get_random_modifier_by_category(owned_modifiers, category_to_reforge)
+		if modifier == "":
+			continue
+		owned_modifiers.append(modifier)
+		apply_modifiers_to_item(modifier)
+
+func _on_all_new_modifiers() -> void:
 	if inventory_item == null or inventory_item.item_data == null :
 		return
 	
@@ -21,14 +43,14 @@ func _on_all_new_modifiers_button_pressed() -> void:
 		owned_modifiers.append(modifier)
 		apply_modifiers_to_item(modifier)
 
-func _on_add_one_modifier_button_pressed() -> void:
+func _on_add_one_modifier() -> void:
 	if inventory_item == null or inventory_item.item_data == null or owned_modifiers.size() >= inventory_item.item_data.max_amount_modifiers:
 		return
 	var modifier: String = Modifiers.get_random_modifier(owned_modifiers)
 	owned_modifiers.append(modifier)
 	apply_modifiers_to_item(modifier)
 
-func _on_remove_one_modifier_button_pressed() -> void:
+func _on_remove_one_modifier() -> void:
 	if inventory_item.item_data == null or owned_modifiers.size() == 0:
 		return
 	
@@ -59,17 +81,24 @@ func apply_modifiers_to_item(new_modifier : String) -> void:
 		if modifier_dictionary.is_empty():
 			continue
 		
-		var category = modifier_dictionary.get("category", "")
+		var modifier_name = modifier_dictionary.get("modifier_name", "")
 		var value = modifier_dictionary.get("value", 0)
 		
-		if category == "uses":
+		if modifier_name == "uses":
 			inventory_item.item_data.use_amount += value
-		elif category == "yield_mult":
+		elif modifier_name == "yield_mult":
 			inventory_item.item_data.yield_multiplier += value
-		elif category == "crit_chance":
+		elif modifier_name == "crit_chance":
 			inventory_item.item_data.harvest_crit_chance += value
-		elif category == "base_harvest":
+		elif modifier_name == "base_harvest":
 			inventory_item.item_data.base_harvest += value
+		##to be implemented
+		#elif modifier_name == "multi_harvest":
+			#inventory_item.item_data.multi_harvest = value
+			#var rank = modifier_dictionary.get("rank", 0)
+			#inventory_item.item_data.multi_harvest_value = rank
+		#elif modifier_name == "mutated_harvest":
+			#inventory_item.item_data.mutated_harvest = value
 		else:
 			continue
 		inventory_item.item_data.modifiers.append(modifier)

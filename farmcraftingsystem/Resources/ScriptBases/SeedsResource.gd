@@ -1,6 +1,10 @@
 extends ItemResource
 class_name SeedsResource
 
+enum Rarity {normal, magic, rare, epic, legendary}
+
+@export var rarity : Rarity
+
 #modifier things
 @export var yield_multiplier : float
 @export var harvest_crit_chance : int

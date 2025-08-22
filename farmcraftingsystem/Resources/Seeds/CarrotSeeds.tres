@@ -1,26 +1,27 @@
-[gd_resource type="Resource" script_class="SeedsResource" load_steps=4 format=3 uid="uid://dgrankgi5wp2y"]
+[gd_resource type="Resource" script_class="SeedsResource" load_steps=5 format=3 uid="uid://dgrankgi5wp2y"]
 
+[ext_resource type="Resource" uid="uid://ba84gw3edc3gm" path="res://Resources/Crops/SweetBeetCrop.tres" id="1_ac7kv"]
 [ext_resource type="Script" uid="uid://co4ncy88yfbxr" path="res://Resources/ScriptBases/SeedsResource.gd" id="1_p0e5c"]
 [ext_resource type="Texture2D" uid="uid://d2a2xawrihnql" path="res://Assets/Seeds/Carrot_Seeds.png" id="2_8xbes"]
 [ext_resource type="Texture2D" uid="uid://dpx1oju7vqqhf" path="res://Assets/Crops/Carrot_Crop.png" id="2_ac7kv"]
 
 [resource]
 script = ExtResource("1_p0e5c")
+rarity = 0
 yield_multiplier = 1.0
 harvest_crit_chance = 1
-seeds_amount = 1
 base_harvest = 5
 grow_time = 3.0
+use_amount = 3
+mutated_harvest_crop = ExtResource("1_ac7kv")
 planted_tile_id = 1
 growing1_tile_id = 2
 growing2_tile_id = 3
 mature_tile_id = 4
-use_amount = 3
 shop_cost_amount = 10
 shop_cost_texture = ExtResource("2_ac7kv")
 name = "Carrot Seeds"
 base_name = "Carrot"
-rarity = 0
 ui_texture = ExtResource("2_8xbes")
 description = "Normal carrot seeds"
 metadata/_custom_type_script = "uid://co4ncy88yfbxr"
