@@ -35,13 +35,6 @@ func _get_tooltip(_at_position: Vector2) -> String:
 
 func update_tooltip():
 	if item_data != null:
-		if item_data is CropResource:
-			#check documentation for string formatting and BBcode if confused
-			custom_tooltip_text = "[b]{name}[/b]\nStack: [color=yellow]{count}[/color]\n[i]{desc}[/i]".format({
-				"name" = item_data.name,
-				"count" = stack_count,
-				"desc" = item_data.description,
-			})
 		
 		if item_data is SeedsResource:
 			var modifiers_text = ""
@@ -57,28 +50,6 @@ func update_tooltip():
 				"modifiers_text" = modifiers_text,
 				"desc" = item_data.description,
 			})
-
-func is_stackable_with(item: Variant) -> bool:
-	return item_data is CropResource and item is CropResource and item.base_name == item_data.base_name
-
-func add_to_stack(amount: int) -> Array:
-	#account for to many items to be stacked on, so it takes the amount it can take and then returns what it cant
-	if not (item_data is CropResource):
-		return [false, amount]
-	if amount <= 0:
-		return [false, amount]
-	
-	var max_stack_count = item_data.max_stack_count
-	if stack_count >= max_stack_count:
-		return [false, amount]
-	
-	var space_left = max_stack_count - stack_count
-	var amount_to_add = min(amount, space_left)
-	stack_count += amount_to_add
-	update_tooltip()
-	
-	var leftover = amount - amount_to_add
-	return [true, leftover]
 
 func _get_drag_data(at_position: Vector2):
 	set_drag_preview(make_drag_preview(at_position))

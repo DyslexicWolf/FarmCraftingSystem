@@ -1,25 +1,26 @@
 extends Node
 
 var normal_modifiers : Dictionary = {
-	yield_up_3 = {category = "yield_mult", rank = 3, value = 3, weight = 10},
-	yield_up_2 = {category = "yield_mult", rank = 2, value = 7, weight = 5},
-	yield_up_1 = {category = "yield_mult", rank = 1, value = 11, weight = 2},
-
-	seeds_up_3 = {category = "seeds", rank = 3, value = 2, weight = 12},
-	seeds_up_2 = {category = "seeds", rank = 2, value = 4, weight = 6},
-	seeds_up_1 = {category = "seeds", rank = 1, value = 7, weight = 3},
-
-	crit_up_3 = {category = "crit_chance", rank = 3, value = 12, weight = 15},
-	crit_up_2 = {category = "crit_chance", rank = 2, value = 24, weight = 10},
-	crit_up_1 = {category = "crit_chance", rank = 1, value = 26, weight = 5},
+	yield_up_3 = {category = "", modifier_name = "yield_mult", rank = 3, value = 3, weight = 10},
+	yield_up_2 = {category = "", modifier_name = "yield_mult", rank = 2, value = 7, weight = 5},
+	yield_up_1 = {category = "", modifier_name = "yield_mult", rank = 1, value = 11, weight = 2},
 	
-	use_amount_3 = {category = "uses", rank = 3, value = 2, weight = 15},
-	use_amount_2 = {category = "uses", rank = 2, value = 4, weight = 10},
-	use_amount_1 = {category = "uses", rank = 1, value = 8, weight = 5},
+	crit_up_3 = {category = "", modifier_name = "crit_chance", rank = 3, value = 12, weight = 15},
+	crit_up_2 = {category = "", modifier_name = "crit_chance", rank = 2, value = 24, weight = 10},
+	crit_up_1 = {category = "", modifier_name = "crit_chance", rank = 1, value = 26, weight = 5},
 	
-	base_harvest_up_3 = {category = "base_harvest", rank = 3, value = 2, weight = 15},
-	base_harvest_up_2 = {category = "base_harvest", rank = 2, value = 4, weight = 10},
-	base_harvest_up_1 = {category = "base_harvest", rank = 1, value = 8, weight = 5},
+	use_amount_3 = {category = "", modifier_name = "uses", rank = 3, value = 2, weight = 15},
+	use_amount_2 = {category = "", modifier_name = "uses", rank = 2, value = 4, weight = 10},
+	use_amount_1 = {category = "", modifier_name = "uses", rank = 1, value = 8, weight = 5},
+	
+	base_harvest_up_3 = {category = "", modifier_name = "base_harvest", rank = 3, value = 2, weight = 15},
+	base_harvest_up_2 = {category = "", modifier_name = "base_harvest", rank = 2, value = 4, weight = 10},
+	base_harvest_up_1 = {category = "", modifier_name = "base_harvest", rank = 1, value = 8, weight = 5},
+	
+	#still needs to be implemented in farmland.gd and seedsresource.gd
+	multi_harvest_3 = {category = "special_harvest_effect", modifier_name = "multi_harvest", rank = 3, value = 50, weight = 15},
+	multi_harvest_2 = {category = "special_harvest_effect", modifier_name = "multi_harvest", rank = 2, value = 65, weight = 10},
+	multi_harvest_1 = {category = "special_harvest_effect", modifier_name = "multi_harvest", rank = 1, value = 85, weight = 5}
 }
 
 func get_random_modifier(excluded_modifiers : Array[String]) -> String:
@@ -29,7 +30,6 @@ func get_random_modifier(excluded_modifiers : Array[String]) -> String:
 			continue
 		total_weight += normal_modifiers[key]["weight"]
 	
-	print("Total weight of valid modifiers: ", total_weight)
 	if total_weight == 0:
 		return ""
 	

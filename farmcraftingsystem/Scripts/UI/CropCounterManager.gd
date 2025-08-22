@@ -11,10 +11,8 @@ func _ready() -> void:
 func _on_picked_up_crop(item: ItemResource, stack_count: int) -> void:
 	var crop_counter = find_crop_counter(item.base_name)
 	if crop_counter:
-		# Already tracking this crop → just add
 		crop_counter.update_count(stack_count)
 	else:
-		# Need to assign a new counter
 		var free_crop_counter := _find_free_crop_counter()
 		if free_crop_counter:
 			free_crop_counter.on_first_pickup(item, stack_count)

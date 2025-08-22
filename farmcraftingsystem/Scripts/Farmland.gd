@@ -43,17 +43,17 @@ func _on_harvest_mature_crops(tile_coords : Vector2i):
 	
 	var instance_count : int
 	if calculate_harvest_crit(item_data.harvest_crit_chance):
-		instance_count = roundi(((item_data.base_harvest + item_data.seeds_amount) * item_data.yield_multiplier) * 2)
+		instance_count = roundi((item_data.base_harvest * item_data.yield_multiplier) * 2)
 	else:
-		instance_count = roundi((item_data.base_harvest + item_data.seeds_amount) * item_data.yield_multiplier)
+		instance_count = roundi(item_data.base_harvest * item_data.yield_multiplier)
 	
 	var capped = min(instance_count, max_instances)
 	var excess = max(instance_count - max_instances, 0)
 	if capped > 0:
 		spawn_pickup_items(tile_coords, pickup_scene, capped, 1)
 	if excess > 0:
-		# one extra pickup with the remaining stack
 		spawn_pickup_items(tile_coords, pickup_scene, 1, excess)
+	
 	set_cell(tile_coords, 0, Vector2i(0, 0))
 	harvest_ready_cells.erase(tile_coords)
 
