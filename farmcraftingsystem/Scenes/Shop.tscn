@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bc305ooswvrix"]
 
-[ext_resource type="Script" uid="uid://dsq0ifr13r4k8" path="res://Scenes/ShopManager.gd" id="1_kjfcx"]
+[ext_resource type="Script" uid="uid://dsq0ifr13r4k8" path="res://Scripts/ShopManager.gd" id="1_kjfcx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5iolr"]
 size = Vector2(181.75, 81)
@@ -13,31 +13,6 @@ collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_5iolr")
-
-[node name="ShopInventoryBackground" type="Panel" parent="."]
-offset_left = -157.0
-offset_top = -235.0
-offset_right = 171.0
-offset_bottom = -57.0
-
-[node name="Label" type="Label" parent="ShopInventoryBackground"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "SHOP"
-
-[node name="ShopInventory" type="GridContainer" parent="ShopInventoryBackground"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 23.0
-offset_right = 324.0
-offset_bottom = 166.0
-columns = 7
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]

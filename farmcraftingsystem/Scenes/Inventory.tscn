@@ -17,10 +17,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -294.0
-offset_top = -148.0
-offset_right = 295.0
-offset_bottom = 144.0
+offset_left = -421.0
+offset_top = -189.0
+offset_right = 421.0
+offset_bottom = 189.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -31,12 +31,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -235.5
-offset_top = -113.0
-offset_right = 234.5
-offset_bottom = 117.0
+offset_left = -396.0
+offset_top = -164.0
+offset_right = 396.0
+offset_bottom = 164.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
 columns = 7
 
 [node name="Hotbar" type="HBoxContainer" parent="."]
@@ -54,58 +56,75 @@ grow_vertical = 0
 script = ExtResource("2_2hjaa")
 
 [node name="PanelContainer1" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
 
 [node name="PanelContainer2" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
 
 [node name="PanelContainer3" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
 
 [node name="PanelContainer4" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
 
 [node name="PanelContainer5" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
 
 [node name="PanelContainer6" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
 
 [node name="PanelContainer7" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
 
 [node name="PanelContainer8" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
 
 [node name="PanelContainer9" type="PanelContainer" parent="Hotbar" groups=["HotbarSlot"]]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 script = ExtResource("2_1pi3o")
 
 [node name="CraftingBackground" type="Panel" parent="."]
-offset_left = 45.0
-offset_top = 176.0
-offset_right = 268.0
-offset_bottom = 468.0
+visible = false
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 75.0
+offset_top = -200.0
+offset_right = 825.0
+offset_bottom = 200.0
+grow_vertical = 2
 script = ExtResource("2_4v8qb")
 
-[node name="CraftingSlot" type="PanelContainer" parent="CraftingBackground" groups=["CraftingSlot"]]
+[node name="SlotBackground" type="Panel" parent="CraftingBackground"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -280.0
+offset_top = 25.0
+offset_right = -30.0
+offset_bottom = 375.0
+grow_horizontal = 0
+
+[node name="CraftingSlot" type="PanelContainer" parent="CraftingBackground/SlotBackground" groups=["CraftingSlot"]]
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -120,23 +139,34 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_4v8qb")
 
-[node name="CraftButton" type="Button" parent="CraftingBackground"]
+[node name="CraftButton" type="Button" parent="CraftingBackground/SlotBackground"]
+custom_minimum_size = Vector2(64, 48)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -23.5
-offset_top = -41.0
-offset_right = 23.5
-offset_bottom = -10.0
+offset_left = -32.0
+offset_top = -70.0
+offset_right = 32.0
+offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Craft"
 
+[node name="CraftingOptionList" type="ScrollContainer" parent="CraftingBackground"]
+layout_mode = 1
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 450.0
+offset_bottom = 375.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CraftingBackground/CraftingOptionList"]
+layout_mode = 2
+
 [node name="CropCounterBackground" type="Panel" parent="."]
-offset_right = 428.0
+offset_right = 430.0
 offset_bottom = 40.0
 script = ExtResource("6_yeyjc")
 
@@ -211,6 +241,60 @@ offset_top = 8.0
 offset_right = 76.0
 offset_bottom = 31.0
 
+[node name="PopupText" type="RichTextLabel" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -230.0
+offset_right = 200.0
+offset_bottom = -180.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+horizontal_alignment = 1
+
+[node name="ShopInventoryBackground" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(64, 64)
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 75.0
+offset_top = -300.0
+offset_right = 825.0
+offset_bottom = 300.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ShopInventoryBackground"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "SHOP"
+
+[node name="ShopInventory" type="GridContainer" parent="ShopInventoryBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 275.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 7
+
 [connection signal="crafting_item_equipped" from="." to="CraftingBackground" method="_on_crafting_slot_item_equipped"]
 [connection signal="crafting_item_unequipped" from="." to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
 [connection signal="picked_up_crop" from="." to="CropCounterBackground" method="_on_picked_up_crop"]
@@ -223,6 +307,6 @@ offset_bottom = 31.0
 [connection signal="item_unequipped" from="Hotbar/PanelContainer7" to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
 [connection signal="item_unequipped" from="Hotbar/PanelContainer8" to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
 [connection signal="item_unequipped" from="Hotbar/PanelContainer9" to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
-[connection signal="item_equipped" from="CraftingBackground/CraftingSlot" to="CraftingBackground" method="_on_crafting_slot_item_equipped"]
-[connection signal="item_unequipped" from="CraftingBackground/CraftingSlot" to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
-[connection signal="pressed" from="CraftingBackground/CraftButton" to="CraftingBackground" method="_on_craft_button_pressed"]
+[connection signal="item_equipped" from="CraftingBackground/SlotBackground/CraftingSlot" to="CraftingBackground" method="_on_crafting_slot_item_equipped"]
+[connection signal="item_unequipped" from="CraftingBackground/SlotBackground/CraftingSlot" to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
+[connection signal="pressed" from="CraftingBackground/SlotBackground/CraftButton" to="CraftingBackground" method="_on_craft_button_pressed"]

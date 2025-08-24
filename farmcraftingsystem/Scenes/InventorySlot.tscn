@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxi3t4ov8nlee"]
+
+[ext_resource type="Script" uid="uid://ri8dhpwrsnhy" path="res://Scripts/UI/InventorySlot.gd" id="1_ia5d8"]
+[ext_resource type="Script" uid="uid://cf4a37u73qgth" path="res://Scripts/UI/InventoryItem.gd" id="2_aw7i0"]
+
+[node name="InventorySlot" type="PanelContainer"]
+custom_minimum_size = Vector2(64, 64)
+script = ExtResource("1_ia5d8")
+
+[node name="ItemIcon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+script = ExtResource("2_aw7i0")

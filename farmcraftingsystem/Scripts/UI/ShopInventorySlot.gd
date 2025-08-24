@@ -5,7 +5,8 @@ var item_icon: TextureRect
 var price_label: Label
 var price_icon: TextureRect
 
-func initialize(texture: Texture2D, price: int, currency_icon: Texture2D) -> void:
+func initialize(texture: Texture2D, price: int, currency_icon: Texture2D, cms : Vector2) -> void:
+	custom_minimum_size = cms
 	item_icon = $ItemIcon
 	price_label = $HBoxContainer/PriceLabel
 	price_icon = $HBoxContainer/PriceIcon

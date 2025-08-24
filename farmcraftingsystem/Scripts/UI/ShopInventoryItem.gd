@@ -12,7 +12,8 @@ func _ready() -> void:
 	expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 
-func initialize(data: SeedsResource, sm : ShopManager) -> void:
+func initialize(data: SeedsResource, sm : ShopManager, cms : Vector2) -> void:
+	custom_minimum_size = cms
 	item_data = data
 	shop_cost_amount = item_data.shop_cost_amount
 	shop_cost_type = item_data.shop_cost_type

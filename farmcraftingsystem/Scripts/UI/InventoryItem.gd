@@ -11,7 +11,8 @@ func _ready() -> void:
 	expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 
-func initialize(data: ItemResource, hudm : HUDManager, count: int = 1) -> void:
+func initialize(data: ItemResource, hudm : HUDManager, cms : Vector2, count: int = 1) -> void:
+	custom_minimum_size = cms
 	item_data = data
 	stack_count = count
 	texture = item_data.ui_texture
