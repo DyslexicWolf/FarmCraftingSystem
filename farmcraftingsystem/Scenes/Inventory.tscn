@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://br48fyjfckcy6"]
+[gd_scene load_steps=10 format=3 uid="uid://br48fyjfckcy6"]
 
 [ext_resource type="Script" uid="uid://c6e1vgdojhuw3" path="res://Scripts/UI/HUDManager.gd" id="1_ersrd"]
 [ext_resource type="Script" uid="uid://c6dgl6kfxt5xi" path="res://Scripts/UI/HotbarSlot.gd" id="2_1pi3o"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://dp5c1wbl46e6l" path="res://Scripts/ModifierCrafting.gd" id="2_4v8qb"]
 [ext_resource type="Script" uid="uid://bcgtvfppxcj7r" path="res://Scripts/UI/CraftingSlot.gd" id="3_4v8qb"]
 [ext_resource type="Script" uid="uid://biqu4rkeiatqq" path="res://Scripts/UI/CropCounter.gd" id="6_4ne0y"]
+[ext_resource type="PackedScene" uid="uid://cd5dils1w8nlu" path="res://Scenes/CraftingOption.tscn" id="6_fih0l"]
+[ext_resource type="Script" uid="uid://hudredhac24p" path="res://Scripts/UI/CraftingOptionsList.gd" id="6_tqkc6"]
 [ext_resource type="Script" uid="uid://bqqqju6ikfqit" path="res://Scripts/UI/CropCounterManager.gd" id="6_yeyjc"]
 
 [node name="HUD" type="CanvasLayer"]
@@ -101,7 +103,6 @@ layout_mode = 2
 script = ExtResource("2_1pi3o")
 
 [node name="CraftingBackground" type="Panel" parent="."]
-visible = false
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -161,8 +162,26 @@ offset_left = 25.0
 offset_top = 25.0
 offset_right = 450.0
 offset_bottom = 375.0
+script = ExtResource("6_tqkc6")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CraftingBackground/CraftingOptionList"]
+custom_minimum_size = Vector2(425, 350)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CraftingOption" parent="CraftingBackground/CraftingOptionList/VBoxContainer" instance=ExtResource("6_fih0l")]
+layout_mode = 2
+
+[node name="CraftingOption2" parent="CraftingBackground/CraftingOptionList/VBoxContainer" instance=ExtResource("6_fih0l")]
+layout_mode = 2
+
+[node name="CraftingOption3" parent="CraftingBackground/CraftingOptionList/VBoxContainer" instance=ExtResource("6_fih0l")]
+layout_mode = 2
+
+[node name="CraftingOption4" parent="CraftingBackground/CraftingOptionList/VBoxContainer" instance=ExtResource("6_fih0l")]
+layout_mode = 2
+
+[node name="CraftingOption5" parent="CraftingBackground/CraftingOptionList/VBoxContainer" instance=ExtResource("6_fih0l")]
 layout_mode = 2
 
 [node name="CropCounterBackground" type="Panel" parent="."]

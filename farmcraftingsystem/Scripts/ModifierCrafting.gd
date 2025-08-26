@@ -9,6 +9,9 @@ func _on_craft_button_pressed():
 	pass
 	#add logic here to see which specific thing to crafting depending on the active element from the crafting list
 
+#ideas for crafting functions: reforge a rare item with new modifiers, including x type of modifier
+#change a specific type of modifier into another (ex. harvest modifiers into seed efficiency)
+
 func _on_reforge_harvest_output(category_to_reforge : String) -> void:
 	if inventory_item == null or inventory_item.item_data == null:
 		return

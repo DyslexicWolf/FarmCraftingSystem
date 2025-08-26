@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Modifiers="*res://Scripts/Globals/Modifiers.gd"
 CropPickups="*res://Scripts/Globals/CropPickups.gd"
+CraftingOptions="*res://Scripts/Globals/CraftingOptions.gd"
 
 [display]
 

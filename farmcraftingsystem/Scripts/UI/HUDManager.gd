@@ -46,7 +46,7 @@ func _input(_event: InputEvent) -> void:
 		inventory_background.visible = true
 	elif Input.is_action_just_pressed("close_inventory") and inventory_background.visible == true:
 		inventory_background.visible = false
-	if Input.is_action_just_pressed("open_crafting_menu") and crafting_background.visible == false:
+	if Input.is_action_just_pressed("open_crafting_menu") and crafting_background.visible == false and shop_inventory_background.visible == false:
 		crafting_background.visible = true
 		inventory_background.set_anchors_preset(Control.PRESET_CENTER_RIGHT)
 		inventory_background.position = centered_right_position
