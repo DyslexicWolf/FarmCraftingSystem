@@ -2,12 +2,31 @@ extends Panel
 class_name ModifierCrafting
 
 var inventory_item : InventoryItem
+var current_id_name : String = ""
 var owned_modifiers : Array[String] = []
+var popup_text : RichTextLabel
 enum Rarity {normal, magic, rare, epic, legendary}
 
+func _ready() -> void:
+	popup_text = $"../PopupText"
+
 func _on_craft_button_pressed():
-	pass
-	#add logic here to see which specific thing to crafting depending on the active element from the crafting list
+	if current_id_name == "":
+		popup_text.visible = true
+		popup_text.text = "No crafting option selected."
+	else:
+		popup_text.visible = false
+	
+	match current_id_name:
+		CraftingOptions.CRAFT_IDS.REFORGE_HARVEST:
+			#temp assignment of "harvest_ouput" since i still have to implement the logic to give categories with the buttons
+			_on_reforge_harvest_output("harvest_output")
+		CraftingOptions.CRAFT_IDS.NEW_MODIFIERS:
+			_on_all_new_modifiers()
+		CraftingOptions.CRAFT_IDS.ADD_ONE_MODIFIER:
+			_on_add_one_modifier()
+		CraftingOptions.CRAFT_IDS.REMOVE_ONE_MODIFIER:
+			_on_remove_one_modifier()
 
 #ideas for crafting functions: reforge a rare item with new modifiers, including x type of modifier
 #change a specific type of modifier into another (ex. harvest modifiers into seed efficiency)
@@ -116,3 +135,8 @@ func _on_crafting_slot_item_equipped(item: InventoryItem) -> void:
 func _on_crafting_slot_item_unequipped(_item: InventoryItem) -> void:
 	inventory_item = null
 	owned_modifiers.clear()
+
+func _on_crafting_option_selected(id_name: String) -> void:
+	if current_id_name == id_name:
+		return
+	current_id_name = id_name

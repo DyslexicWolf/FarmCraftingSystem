@@ -103,6 +103,7 @@ layout_mode = 2
 script = ExtResource("2_1pi3o")
 
 [node name="CraftingBackground" type="Panel" parent="."]
+visible = false
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -169,20 +170,20 @@ custom_minimum_size = Vector2(425, 350)
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="CraftingOption" parent="CraftingBackground/CraftingOptionList/VBoxContainer" instance=ExtResource("6_fih0l")]
+[node name="CraftingOption0" parent="CraftingBackground/CraftingOptionList/VBoxContainer" instance=ExtResource("6_fih0l")]
 layout_mode = 2
+
+[node name="CraftingOption1" parent="CraftingBackground/CraftingOptionList/VBoxContainer" instance=ExtResource("6_fih0l")]
+layout_mode = 2
+crafting_option_index = 1
 
 [node name="CraftingOption2" parent="CraftingBackground/CraftingOptionList/VBoxContainer" instance=ExtResource("6_fih0l")]
 layout_mode = 2
+crafting_option_index = 2
 
 [node name="CraftingOption3" parent="CraftingBackground/CraftingOptionList/VBoxContainer" instance=ExtResource("6_fih0l")]
 layout_mode = 2
-
-[node name="CraftingOption4" parent="CraftingBackground/CraftingOptionList/VBoxContainer" instance=ExtResource("6_fih0l")]
-layout_mode = 2
-
-[node name="CraftingOption5" parent="CraftingBackground/CraftingOptionList/VBoxContainer" instance=ExtResource("6_fih0l")]
-layout_mode = 2
+crafting_option_index = 3
 
 [node name="CropCounterBackground" type="Panel" parent="."]
 offset_right = 430.0
@@ -262,17 +263,19 @@ offset_bottom = 31.0
 
 [node name="PopupText" type="RichTextLabel" parent="."]
 visible = false
+custom_minimum_size = Vector2(500, 60)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -200.0
+offset_left = -250.0
 offset_top = -230.0
-offset_right = 200.0
-offset_bottom = -180.0
+offset_right = 250.0
+offset_bottom = -170.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 horizontal_alignment = 1
 
@@ -329,3 +332,4 @@ columns = 7
 [connection signal="item_equipped" from="CraftingBackground/SlotBackground/CraftingSlot" to="CraftingBackground" method="_on_crafting_slot_item_equipped"]
 [connection signal="item_unequipped" from="CraftingBackground/SlotBackground/CraftingSlot" to="CraftingBackground" method="_on_crafting_slot_item_unequipped"]
 [connection signal="pressed" from="CraftingBackground/SlotBackground/CraftButton" to="CraftingBackground" method="_on_craft_button_pressed"]
+[connection signal="option_selected" from="CraftingBackground/CraftingOptionList" to="CraftingBackground" method="_on_crafting_option_selected"]

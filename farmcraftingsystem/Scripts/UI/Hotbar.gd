@@ -16,8 +16,6 @@ func _ready():
 	tile_map_layer = get_node("/root/Game/Farmland")
 	camera = get_node("/root/Game/Player/Camera2D")
 
-#implement numbers for hotbar slots
-
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
@@ -64,7 +62,6 @@ func use_item_on_normal_farmland(tile_coords : Vector2i):
 	var slot = slots[active_slot]
 	if slot.has_item() == false:
 		return
-	
 	var inventory_item = slot.get_child(0)
 	
 	if inventory_item.item_data is not SeedsResource:
